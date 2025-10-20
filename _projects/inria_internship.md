@@ -13,7 +13,7 @@ The remarkable success of deep neural networks (DNNs) presents a profound parado
 
 To build reliable AI, we need theoretical tools that can rigorously **quantify the difference** between a model's performance on the training data ($$\hat{L}_{\mathcal{S}}$$, the empirical risk) and its true performance on the entire unknown data distribution ($$L$$, the expected risk).
 
-Traditional bounds, derived from concepts like **VC-Dimension** and **Rademacher Complexity**, aim to provide a uniform guarantee for an entire *class* of functions (ie all the possible functions output by our learning algorithm) . However, because these bounds are worst-case and independent of the actual learning process, they are notoriously **loose**, often yielding vacuous results (e.g., "the error is less than 100%").
+Traditional bounds, derived from concepts like **VC-Dimension** and **Rademacher Complexity**, aim to provide a uniform guarantee for an entire *class* of functions (ie. all the possible functions output by our learning algorithm). However, because these bounds are worst-case and independent of the actual learning process, they are notoriously **loose**, often yielding vacuous results (e.g., "the error is less than 100%").
 
 This failure motivated the shift toward frameworks that incorporate the learning algorithm and the data, such as the **PAC-Bayes theory**.
 
@@ -39,7 +39,7 @@ The logic is sound: if the learned distribution $$Q$$ is simple and close to a c
 
 ## The Redundancy Trap: Rescaling Invariances
 
-Our work focuses on networks that use the **Rectified Linear Unit (ReLU)** activation function, $x \mapsto \mathrm{max}(0, x)$. This function has the critical property of **positive homogeneity**: for any $$\lambda > 0,\; \mathrm{ReLU}(\lambda x) = \lambda \mathrm{ReLU}(x)$$.
+Our work focuses on networks that use the **Rectified Linear Unit (ReLU)** activation function, $$x \mapsto \mathrm{max}(0, x)$$. This function has the critical property of **positive homogeneity**: for any $$\lambda > 0,\; \mathrm{ReLU}(\lambda x) = \lambda \mathrm{ReLU}(x)$$.
 
 This property creates a redundancy known as **rescaling invariance**. For any hidden neuron in the network, we can construct an entire **equivalence class** of weight vectors $$\diamond^{\lambda}(w)$$ that all realize the **exact same function** $$f_w$$. This is achieved by:
 1.  Multiplying the weights entering the neuron by $$\lambda$$.
