@@ -1,45 +1,47 @@
 {
   "basics": {
-    "name": "Your Sidebar Name",
-    "email": "none@example.org",
-    "phone": "",
-    "website": "https://academicpages.github.io",
-    "summary": "Currently employed at Red Brick University. Short biography for the left-hand sidebar",
+    "name": "Rouchouse Damien",
+    "email": "damien.rouchouse@gmail.com",
+    "phone": "+33 7 69 89 97 82",
+    "website": "https://damidoum.github.io",
+    "summary": "Master’s student at Mines Paris – PSL and MVA seeking a Research Internship in AI",
     "location": {
       "address": "",
       "postalCode": "",
-      "city": "Earth",
-      "countryCode": "US",
+      "city": "Paris",
+      "countryCode": "FR",
       "region": ""
     },
     "profiles": [
       {
-        "network": "Google Scholar",
-        "username": "",
-        "url": "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
-      },
-      {
-        "network": "ORCID",
-        "username": "",
-        "url": "http://orcid.org/yourorcidurl"
+        "network": "Linkedin",
+        "username": "damien-rouchouse",
+        "url": "https://www.linkedin.com/in/damien-rouchouse/"
       },
       {
         "network": "GitHub",
-        "username": "academicpages",
-        "url": "https://github.com/academicpages"
+        "username": "damidoum",
+        "url": "https://github.com/damidoum/"
       }
     ]
   },
   "work": [],
   "education": [
     {
-      "institution": "GitHub University",
-      "area": "Ph.D in Version Control Theory",
+      "institution": "Ecole Normale Supérieure Paris-Saclay",
+      "area": "Applied Mathematics & Machine Learning",
       "studyType": "",
-      "startDate": "",
-      "endDate": "2018",
+      "startDate": "2025",
+      "endDate": "2026",
       "gpa": null,
-      "courses": []
+      "courses": [
+        "Advanced Learning for Text and Graph Data",
+        "Geometric Data Analysis",
+        "Optimal Transport",
+        "Robotics",
+        "Computational Statistics",
+        "Convex Optimization"
+      ]
     },
     {
       "institution": "GitHub University",
@@ -150,3 +152,4 @@
     }
   ]
 }
+
