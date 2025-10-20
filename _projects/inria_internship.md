@@ -5,6 +5,7 @@ permalink: /projects/2025/project_inria/
 author_profile: false
 tags: [Deep Learning, Generalization Theory, PAC-Bayes, Invariance, Theoretical Machine Learning]
 ---
+A story of how rescaling symmetries in ReLU networks undermine PAC-Bayes generalization bounds, and our theoretical solution to restore meaningful guarantees.
 
 ## Unpacking the Generalization Enigma
 
