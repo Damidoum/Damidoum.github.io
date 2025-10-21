@@ -10,13 +10,15 @@ redirect_from:
 I am a graduate student passionate about the intersection of Mathematics, Computer Science, and Machine Learning. Driven by curiosity, I aim to pursue a career in fundamental
 research, leveraging rigorous theoretical insights to solve complex, real-world problems.
 
-## Current Focus: Theory & Computation
+## Current study focus 
 
 My academic year is structured around two key areas of expertise:
 
-- At [Mines Paris - PSL](https://www.minesparis.psl.eu), my focus is currently shifting toward foundational Computer Science, including compilers, low-level programming, and functional programming (Haskell).
 - At the [MVA program](https://www.master-mva.com), I am deepening my skills in Applied Mathematics and particularly Machine Learning. My first semester courses include
   Advanced Learning for Text and Graph Data, Geometric Data Analysis, Optimal Transport, Robotics, Computational Statistics, and Convex Optimization.
+
+- At [Mines Paris - PSL](https://www.minesparis.psl.eu), my focus is currently shifting towards Computer Science, including functional
+programming (Haskell), cryptography, compilers, and low-level programming.
 
 ## Research and Hands-On Experience
 
