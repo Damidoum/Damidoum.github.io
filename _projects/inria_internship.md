@@ -1,5 +1,5 @@
 ---
-title: "The Generalization Paradox: Why Symmetries Break Our Best Theoretical Guarantees in Deep Learning"
+title: "When Symmetries Undermine Our Confidence in Generalization Bounds"
 date: 2025-10-14
 permalink: /projects/2025/project_inria/
 author_profile: false
