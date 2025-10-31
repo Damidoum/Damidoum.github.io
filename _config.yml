@@ -35,7 +35,7 @@ author:
   # Academic websites
   academia: # URL
   arxiv: "https://arxiv.org/search/?searchtype=author&query=Rouchouse%2C+D" # URL - Update with the correct link to your profile
-  googlescholar:
+  googlescholar: "https://scholar.google.com/citations?user=ZEo6qaUAAAAJ&hl=en"
   inspire-hep: # URL
   impactstory: # URL
   orcid:
