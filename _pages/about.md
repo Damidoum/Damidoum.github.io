@@ -7,24 +7,23 @@ redirect_from:
   - /about.html
 ---
 
-I am a graduate student passionate about the intersection of Mathematics, Computer Science, and Machine Learning. Driven by curiosity, I aim to pursue a career in fundamental
-research, leveraging rigorous theoretical insights to solve complex, real-world problems.
+Hi! I'm Damien, a graduate student working at the intersection of mathematics, computer science, and machine learning.
+I enjoy combining theory with practice, and I'm especially interested in research-oriented questions that still connect to real applications.
 
-## Current study focus 
+## Current focus
 
-My academic year is structured around two key areas of expertise:
+My year is split between two complementary tracks:
 
-- At the [MVA program](https://www.master-mva.com), I am deepening my skills in Applied Mathematics and particularly Machine Learning. My first semester courses include
-  Advanced Learning for Text and Graph Data, Geometric Data Analysis, Optimal Transport, Robotics, Computational Statistics, and Convex Optimization.
+- At the [MVA program](https://www.master-mva.com), I focus on applied mathematics and machine learning.
 
-- At [Mines Paris - PSL](https://www.minesparis.psl.eu), my focus is currently shifting towards Computer Science, including functional
-programming (Haskell), cryptography, compilers, and low-level programming.
+- At [Mines Paris - PSL](https://www.minesparis.psl.eu), I focus on core computer science topics (functional programming, cryptography, compilers, and low-level systems).
 
-## Research and Hands-On Experience
+My main project currently centers on **discrete diffusion models**, under the supervision of **Julie Delon, Rémi Gribonval, and Gabriel Peyré**.
 
-My commitment to the field is rooted in prior research and applied experience:
+## Research and experience
 
-- I have conducted research at Inria (with the [OCKHAM](https://team.inria.fr/ockham/fr/) and [GENESIS](https://bguedj.github.io) teams) on PAC-Bayes generalization bounds and the role of symmetries in neural networks.
-- This theoretical drive is continuously strengthened by hands-on experience, notably through applied research in industrial anomaly detection at Scortex and my work at Harvard, which solidified my passion for both abstract ideas and their tangible impact.
+- I previously worked at Inria with the [OCKHAM](https://team.inria.fr/ockham/fr/) and [GENESIS](https://bguedj.github.io) teams on PAC-Bayes generalization bounds and symmetries in neural networks.
+- I also had applied research experience in industrial anomaly detection at Scortex and research experience at Harvard.
 
-I believe in building and exploring. I invite you to check out the [Projects section](/projects) to see what I've been working on, from research prototypes to personal initiatives. If you are working on interesting problems in ML, Mathematics, or Technology, I would love to connect and exchange ideas!
+If you'd like to know more, feel free to browse the [Projects section](/projects).  
+And if you're working on interesting problems in ML, mathematics, or tech, I'd be happy to connect.
