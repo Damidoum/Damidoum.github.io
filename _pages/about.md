@@ -18,7 +18,7 @@ My year is split between two complementary tracks:
 
 - At [Mines Paris - PSL](https://www.minesparis.psl.eu), I focus on core computer science topics (functional programming, cryptography, compilers, and low-level systems).
 
-My main project currently centers on **discrete diffusion models**, under the supervision of **Julie Delon, Rémi Gribonval, and Gabriel Peyré**.
+My main project currently centers on discrete diffusion models, under the supervision of Julie Delon, Rémi Gribonval, and Gabriel Peyré.
 
 ## Research and experience
 
