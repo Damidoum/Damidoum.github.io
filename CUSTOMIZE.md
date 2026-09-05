@@ -67,8 +67,8 @@ l'accueil, et dans le flux RSS. Son URL est `/blog/AAAA/MM/JJ/mon-sujet/`.
 La date du nom de fichier fait foi ; les billets futurs restent cachés jusqu'à
 une compilation après cette date. Il n'y a pas de publication programmée automatique.
 
-Les deux projets existants sont aussi présentés dans le carnet sous « Project
-notes », à leur URL d'origine. Le RSS contient les billets de `_posts/` uniquement.
+Les projets sont aussi présentés dans le carnet avec leur thème et leur URL
+propre. Le RSS contient les billets de `_posts/` uniquement.
 Le carnet affiche uniquement les textes disponibles, sans vignette d’attente.
 
 Utiliser `$...$` pour les formules dans le texte et `$$...$$` sur des lignes séparées
@@ -126,5 +126,7 @@ dans `assets/images/alpine-placeholder.jpg` avec son crédit visible.
 Le début du doctorat en octobre 2026 reprend l'information donnée pour cette
 proposition. L'affiliation, l'encadrement doctoral et le sujet exact restent à
 ajouter lorsqu'ils sont connus. Le PDF du CV existant a été conservé tel quel.
-La présente refonte ne constitue pas une vérification scientifique des textes
-de recherche déjà présents.
+Les deux articles MVA ont été réécrits à partir du code, des figures et, pour le
+retournement temporel, du rapport et du notebook du projet. Les simulations
+n’ont pas été relancées. Les autres textes de recherche n’ont pas fait l’objet
+d’une vérification scientifique dans cette refonte.
