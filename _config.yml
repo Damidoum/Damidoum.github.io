@@ -1,6 +1,6 @@
-# Personal site. Content stays in Markdown; the design is independent of Academic Pages.
+# Technical configuration. For everyday editing, start with README.md.
 title: Damien Rouchouse
-name: Damien Rouchouse
+author: Damien Rouchouse
 locale: en-US
 description: "Research and notes on mathematics and machine learning by Damien Rouchouse."
 url: "https://damidoum.github.io"
@@ -8,16 +8,11 @@ baseurl: ""
 repository: "Damidoum/Damidoum.github.io"
 timezone: Europe/Paris
 
-author:
-  name: Damien Rouchouse
-  email: damien.rouchouse@gmail.com
-  location: Paris, France
-  github: Damidoum
-  linkedin: damien-rouchouse
-  googlescholar: "https://scholar.google.com/citations?user=ZEo6qaUAAAAJ&hl=en"
-  arxiv: "https://arxiv.org/search/?searchtype=author&query=Rouchouse%2C+D"
-
-# Only genuine content collections are published.
+# Content, personal settings and presentation have separate homes.
+collections_dir: content
+data_dir: settings
+layouts_dir: design/layouts
+includes_dir: design/includes
 collections:
   publications:
     output: true
@@ -55,16 +50,9 @@ defaults:
       layout: single
       nav: research
       math: true
-  - scope:
-      path: _projects/inria_internship.md
-    values:
-      formula: "ReLU(λx) = λ ReLU(x)"
-      cover_label: "Positive scaling · λ > 0"
 
 include:
-  - _pages
   - files
-# Preserve the old theme sources for reference, but do not publish its demo pages.
 exclude:
   - vendor
   - node_modules
@@ -72,43 +60,17 @@ exclude:
   - tmp
   - .bundle
   - .github
-  - .sass-cache
-  - .jekyll-cache
-  - .jekyll-assets-cache
-  - .asset-cache
   - .openai
   - Gemfile
   - Gemfile.lock
-  - package.json
-  - package-lock.json
-  - Dockerfile
-  - docker-compose.yaml
-  - CONTRIBUTING.md
   - README.md
-  - CUSTOMIZE.md
   - LICENSE
-  - scripts
-  - markdown_generator
-  - talkmap
-  - talkmap.ipynb
-  - talkmap.py
-  - assets/css/main.scss
-  - assets/js/_main.js
-  - assets/js/plugins
-  - assets/js/vendor
-  - _pages/archive-layout-with-content.md
-  - _pages/category-archive.html
-  - _pages/collection-archive.html
-  - _pages/cv-json.md
-  - _pages/markdown.md
-  - _pages/non-menu-page.md
-  - _pages/page-archive.html
-  - _pages/portfolio.html
-  - _pages/tag-archive.html
-  - _pages/talkmap.html
-  - _pages/talks.html
-  - _pages/teaching.html
-  - _pages/terms.md
+  - site
+  - tools
+  - docs
+  - settings
+  - design/layouts
+  - design/includes
 
 encoding: utf-8
 markdown: kramdown
@@ -120,15 +82,9 @@ kramdown:
   input: GFM
   hard_wrap: false
   math_engine: mathjax
-sass:
-  sass_dir: _sass
-  style: compressed
 plugins:
   - jekyll-feed
-  - jekyll-gist
-  - jekyll-paginate
   - jekyll-sitemap
   - jekyll-redirect-from
-  - jemoji
 feed:
   path: feed.xml

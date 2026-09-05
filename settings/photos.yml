@@ -1,0 +1,3 @@
+# Ajouter une photo : ./site photo "/chemin/photo.jpg" --title "Aiguille du Midi"
+# L'ordre de cette liste définit l'ordre dans la galerie. Voir docs/writing.md.
+[]

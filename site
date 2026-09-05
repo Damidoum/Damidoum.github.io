@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative 'tools/site_cli'
+
+exit PersonalSite::CLI.new(root: __dir__).run(ARGV)
