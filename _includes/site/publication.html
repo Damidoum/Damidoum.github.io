@@ -1,0 +1,20 @@
+{% case publication.category %}
+  {% when 'preprints' %}{% assign kind = 'Preprint' %}
+  {% when 'conferences' %}{% assign kind = 'Conference paper' %}
+  {% when 'manuscripts' %}{% assign kind = 'Journal article' %}
+  {% else %}{% assign kind = '' %}
+{% endcase %}
+<article class="publication-row">
+  <span class="publication-year">{{ publication.date | date: '%Y' }}</span>
+  <div>
+    <p class="eyebrow">{{ publication.venue }}{% if kind != '' %} · {{ kind }}{% endif %}</p>
+    <h3><a href="{{ publication.url | relative_url }}">{{ publication.title }}</a></h3>
+    <p class="publication-authors">{{ publication.authors }}</p>
+    <div class="publication-links">
+      {% if publication.paperurl %}<a href="{{ publication.paperurl }}">Paper ↗</a>{% endif %}
+      {% if publication.bibtexurl %}<a href="{{ publication.bibtexurl | relative_url }}">BibTeX ↓</a>{% endif %}
+      {% if publication.projecturl %}<a href="{{ publication.projecturl | relative_url }}">Behind the paper →</a>{% endif %}
+    </div>
+  </div>
+  <span class="publication-mark" aria-hidden="true">↗</span>
+</article>

@@ -1,0 +1,11 @@
+---
+layout: archive
+title: Understanding how we learn
+permalink: /research/
+nav: research
+eyebrow: Research
+description: "Questions at the intersection of mathematics, computer science, and machine learning."
+---
+<div class="research-intro"><div><p>My interests lie in the mathematical foundations of machine learning, with a particular focus on generalization theory and generative models.</p><p>My work on discrete diffusion models is supervised by Julie Delon, Rémi Gribonval, and Gabriel Peyré. Previously, I worked at Inria with the <a href="https://team.inria.fr/ockham/fr/">OCKHAM</a> and <a href="https://bguedj.github.io">GENESIS</a> teams on PAC-Bayes bounds and symmetries in neural networks.</p><p>My background spans the <a href="https://www.master-mva.com">MVA program</a> and <a href="https://www.minesparis.psl.eu">Mines Paris – PSL</a>, with research experience at Harvard and applied work at Scortex.</p></div><ul class="research-topics"><li><span>01</span> Generalization & PAC-Bayes</li><li><span>02</span> Symmetries in neural networks</li><li><span>03</span> Discrete diffusion models</li></ul></div>
+<section class="section-space" aria-labelledby="publications-title"><div class="section-heading"><h2 id="publications-title">Publications</h2><a class="text-link" href="{{ site.author.googlescholar }}">Google Scholar ↗</a></div>{% for publication in site.publications reversed %}{% include site/publication.html %}{% endfor %}</section>
+<section class="section-space" aria-labelledby="projects-title"><div class="section-heading"><h2 id="projects-title">From theory to practice</h2><a class="text-link" href="{{ '/projects/' | relative_url }}">All projects ↗</a></div><p>Longer write-ups, experiments, and the details behind the results.</p><a class="button" href="{{ '/projects/' | relative_url }}">Explore the projects ↗</a></section>

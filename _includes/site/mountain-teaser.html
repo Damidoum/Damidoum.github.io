@@ -1,0 +1,18 @@
+{% assign first_photo = site.data.photos | first %}
+<section class="mountain-teaser section-space" aria-labelledby="outside-title">
+  <div>
+    <p class="eyebrow">03 / Away from the desk</p>
+    <h2 id="outside-title">A different<br>kind of <em>perspective.</em></h2>
+    <p>Trails, climbing, and a camera in the mountains.</p>
+    <a class="button button-light" href="{{ '/mountains/' | relative_url }}">Into the mountains <span aria-hidden="true">↗</span></a>
+  </div>
+  <figure class="mountain-teaser-image">
+    {% if first_photo %}
+    <img src="{{ first_photo.image | relative_url }}" alt="{{ first_photo.alt | escape }}" width="{{ first_photo.width | default: 1600 }}" height="{{ first_photo.height | default: 1067 }}" loading="lazy">
+    <figcaption>{{ first_photo.title }}{% if first_photo.location %} · {{ first_photo.location }}{% endif %}</figcaption>
+    {% else %}
+    <img src="{{ '/assets/images/alpine-placeholder.jpg' | relative_url }}" alt="Snow-covered Alpine ridge near Flums, Switzerland" width="2400" height="1600" loading="lazy">
+    <figcaption>Illustration · <a href="https://unsplash.com/photos/glacier-mountains-during-day-BZpt3Qn09WQ">Niklas Liniger / Unsplash</a></figcaption>
+    {% endif %}
+  </figure>
+</section>

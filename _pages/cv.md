@@ -2,7 +2,9 @@
 layout: archive
 title: "CV"
 permalink: /cv/
-author_profile: true
+nav: cv
+eyebrow: Background
+description: Education, research, and the work along the way.
 redirect_from:
   - /resume
 ---
@@ -46,7 +48,7 @@ _Inria (Supervised by A. Gonon, R. Gribonval, and B. Guedj) | Lyon, France & Lon
 - Leveraged symmetries of ReLU networks (weight-rescaling invariances) to improve standard PAC-Bayesian bounds.
 - Implemented, and evaluated the derived method using PyTorch Lightning and wandb.
 - Achieved a 2× improvement over standard bounds on MNIST/CIFAR-10, successfully transforming vacuous bounds into non-vacuous ones.
-- First author of a paper under review at ICLR 2026 ([arxiv.org/abs/2509.26149](https://arxiv.org/abs/2509.26149)).
+- First author of a research preprint ([arxiv.org/abs/2509.26149](https://arxiv.org/abs/2509.26149)).
 
 ### AI Research & Software Engineering Intern – Industrial Vision
 
@@ -99,12 +101,12 @@ _Trium Forum Organization | Paris, France_
 
 ## Publications
 
-<ul>{% for post in site.publications reversed %}
-  {% include archive-single-cv.html %}
-{% endfor %}</ul>
+{% for publication in site.publications reversed %}
+- [{{ publication.title }}]({{ publication.paperurl }}), {{ publication.date | date: '%Y' }}.
+{% endfor %}
 
 ---
 
 <div class="cv-download-links">
-  <a href="{{ base_path }}/files/cv.pdf" class="btn btn--primary">Download CV as PDF</a>
+  <a href="{{ '/files/cv.pdf' | relative_url }}" class="btn btn--primary">Download CV as PDF</a>
 </div>
