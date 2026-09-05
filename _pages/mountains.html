@@ -1,16 +1,16 @@
 ---
 layout: site
-title: Into the mountains
-description: "A photo notebook for days on the trail, on the rock, and above the clouds."
+title: Mountains
+description: "Mountain photography."
 permalink: /mountains/
 nav: mountains
 ---
 <div class="wrap">
-  <div class="gallery-intro"><header class="page-heading"><p class="eyebrow">Away from the desk</p><h1>Into the <em>mountains.</em></h1><p>A photo notebook for days on the trail, on the rock, and above the clouds.</p></header><p class="eyebrow">Less screen. More sky.</p></div>
+  <header class="page-heading"><h1>Mountains</h1></header>
   {% if site.data.photos.size > 0 %}
   <div class="photo-grid">{% for photo in site.data.photos %}<figure><a href="{{ photo.image | relative_url }}"><img src="{{ photo.image | relative_url }}" alt="{{ photo.alt | escape }}" width="{{ photo.width | default: 1600 }}" height="{{ photo.height | default: 1067 }}" loading="lazy"></a><figcaption>{{ photo.title }}<span>{{ photo.location }}{% if photo.date %} · {{ photo.date | date: '%B %Y' }}{% endif %}</span></figcaption></figure>{% endfor %}</div>
   {% else %}
-  <figure class="gallery-feature"><img src="{{ '/assets/images/alpine-placeholder.jpg' | relative_url }}" alt="A snow-covered Alpine ridge near Flums in Switzerland, photographed by Niklas Liniger" width="2400" height="1600"><figcaption><span>Alpine illustration · personal photo collection coming soon</span><span>Photo by <a href="https://unsplash.com/photos/glacier-mountains-during-day-BZpt3Qn09WQ">Niklas Liniger / Unsplash</a></span></figcaption></figure>
-  <div class="gallery-empty"><p class="eyebrow">The collection starts here</p><h2>A few moments from up there.</h2><p>This is where I will share my mountain photographs. The first collection is still to come.</p></div>
+  <figure class="gallery-feature"><img src="{{ '/assets/images/alpine-placeholder.jpg' | relative_url }}" alt="A snow-covered Alpine ridge near Flums in Switzerland, photographed by Niklas Liniger" width="2400" height="1600"><figcaption><span>Illustration · personal photographs coming soon</span><span>Photo by <a href="https://unsplash.com/photos/glacier-mountains-during-day-BZpt3Qn09WQ">Niklas Liniger / Unsplash</a></span></figcaption></figure>
+
   {% endif %}
 </div>

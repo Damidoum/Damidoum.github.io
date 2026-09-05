@@ -6,11 +6,9 @@
       {% if note.cover %}<img src="{{ note.cover | relative_url }}" alt="" width="720" height="440" loading="lazy">{% else %}<span class="cover-grid"></span><span class="cover-equation">{{ note.formula | default: '∑' | escape }}</span><span class="cover-label">{{ note.cover_label | default: note.topic | default: 'Mathematical notes' | escape }}</span>{% endif %}
     </a>
     <div class="note-meta"><span>{% if note.topic %}{{ note.topic }}{% elsif note.collection == 'projects' %}Project notes{% else %}Mathematics{% endif %}</span><time datetime="{{ note.date | date_to_xmlschema }}">{{ note.date | date: '%b %Y' }}</time></div>
-    <h3><a href="{{ note.url | relative_url }}">{{ note.title }} <span aria-hidden="true">↗</span></a></h3>
+    <h3><a href="{{ note.url | relative_url }}">{{ note.title }}</a></h3>
     <p>{{ note.description | default: note.excerpt | strip_html | truncatewords: 23 }}</p>
   </article>
 {% endfor %}
-{% if notes.size < 3 %}
-  <aside class="note-coming"><span class="eyebrow">A weekly habit, in the making</span><span class="coming-symbol" aria-hidden="true">∴</span><h3>One idea.<br>A little further.</h3><p>A space for short explorations of mathematics. The first weekly notes are still to come.</p><span class="coming-label"><span class="status-dot"></span> Coming soon</span></aside>
-{% endif %}
 </div>
+{% if notes.size == 0 %}<p class="empty-message">No notes published yet.</p>{% endif %}

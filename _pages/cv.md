@@ -3,8 +3,7 @@ layout: archive
 title: "CV"
 permalink: /cv/
 nav: cv
-eyebrow: Background
-description: Education, research, and the work along the way.
+description: Education and research experience.
 redirect_from:
   - /resume
 ---

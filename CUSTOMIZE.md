@@ -62,14 +62,14 @@ cover_label: Conditional probability
 ---
 ```
 
-Le billet apparaît automatiquement dans le carnet, parmi les derniers textes sur
+Le billet apparaît automatiquement dans le carnet, parmi les deux derniers textes sur
 l'accueil, et dans le flux RSS. Son URL est `/blog/AAAA/MM/JJ/mon-sujet/`.
 La date du nom de fichier fait foi ; les billets futurs restent cachés jusqu'à
 une compilation après cette date. Il n'y a pas de publication programmée automatique.
 
 Les deux projets existants sont aussi présentés dans le carnet sous « Project
 notes », à leur URL d'origine. Le RSS contient les billets de `_posts/` uniquement.
-Le texte « Coming soon » disparaît dès que le carnet contient au moins trois textes.
+Le carnet affiche uniquement les textes disponibles, sans vignette d’attente.
 
 Utiliser `$...$` pour les formules dans le texte et `$$...$$` sur des lignes séparées
 pour les équations centrées. MathJax est chargé uniquement sur les articles,
@@ -104,8 +104,8 @@ réelles évite les déplacements de mise en page pendant le chargement. Les pho
 s'ouvrent en grand au clic. Une largeur de 1600–2400 pixels et des JPEG compressés
 conviennent généralement. Ajouter des textes alternatifs descriptifs.
 
-Dès la première photo ajoutée, l'illustration et le message d'attente de la galerie
-disparaissent. L'accueil utilise aussi la première photo de cette liste.
+Dès la première photo ajoutée, l'illustration de la galerie disparaît.
+Les photographies sont regroupées sur la page Mountains.
 
 L'image actuelle est une **illustration**, pas une photographie de Damien :
 [Niklas Liniger, Unsplash](https://unsplash.com/photos/glacier-mountains-during-day-BZpt3Qn09WQ),

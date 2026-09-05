@@ -12,7 +12,7 @@
   <meta property="og:description" content="{{ description | escape }}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <meta property="og:type" content="{% if page.date %}article{% else %}website{% endif %}">
-  <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/monogram.svg' | relative_url }}">
+  <link rel="icon" href="data:,">
   <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
   {% feed_meta %}
   <script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
@@ -24,7 +24,7 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header wrap">
-    <a class="identity" href="{{ '/' | relative_url }}" aria-label="Damien Rouchouse, home"><span class="monogram" aria-hidden="true">dr.</span><span>Damien Rouchouse</span></a>
+    <a class="identity" href="{{ '/' | relative_url }}" aria-label="Damien Rouchouse, home">Damien Rouchouse</a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>Menu <span aria-hidden="true">＋</span></button>
     <nav class="site-nav" id="site-nav" aria-label="Main navigation">
       {% for item in site.data.navigation.main %}
@@ -35,9 +35,8 @@
   </header>
   <main id="main" tabindex="-1">{{ content }}</main>
   <footer class="site-footer wrap">
-    <div><a class="footer-name" href="{{ '/' | relative_url }}">Damien Rouchouse<span class="accent">.</span></a><p>Mathematics, machine learning & the outdoors.</p></div>
-    <div class="footer-links"><a href="mailto:{{ site.author.email }}">Email ↗</a><a href="{{ site.author.googlescholar }}">Scholar ↗</a><a href="https://github.com/{{ site.author.github }}">GitHub ↗</a><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}/">LinkedIn ↗</a></div>
-    <div class="footer-bottom"><span>© {{ site.time | date: '%Y' }} Damien Rouchouse</span><a href="{{ '/feed.xml' | relative_url }}">Notebook RSS ↗</a><a href="#main">Back to top ↑</a></div>
+    <span class="copyright">© {{ site.time | date: '%Y' }} Damien Rouchouse</span>
+    <div class="footer-links"><a href="mailto:{{ site.author.email }}">Email</a><a href="{{ site.author.googlescholar }}">Scholar</a><a href="https://github.com/{{ site.author.github }}">GitHub</a><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}/">LinkedIn</a><a href="{{ '/feed.xml' | relative_url }}">RSS</a></div>
   </footer>
 </body>
 </html>
