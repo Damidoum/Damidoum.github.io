@@ -10,7 +10,7 @@ require 'yaml'
 class SiteChecker
   # Keep the original article URLs and a few public entry points stable.
   REQUIRED_ROUTES = %w[
-    / /blog/ /resume /year-archive/
+    / /blog/ /photos/ /mountains/ /resume /year-archive/
     /projects/2025/project_inria/
     /projects/2026/mva-projects/
     /projects/2026/learning-pendulum/
@@ -20,9 +20,9 @@ class SiteChecker
     /sitemap.xml /feed.xml
   ].freeze
   PRIVATE_DIRECTORIES = %w[
-    tools docs settings content scripts templates .git .github .openai .bundle
+    PHOTO tools docs settings content scripts templates .git .github .openai .bundle
     .jekyll-cache .sass-cache vendor node_modules _site _drafts _posts _pages
-    _projects _publications _layouts _includes _data _sass
+    _projects _publications _albums _layouts _includes _data _sass
     design/layouts design/includes
   ].freeze
   PRIVATE_FILES = %w[
@@ -171,7 +171,7 @@ class SiteChecker
     source = File.expand_path(@config.fetch('source', '.'), @root)
     collections = File.expand_path(@config.fetch('collections_dir', '.'), source)
     html_paths = files.select { |file| File.extname(file).downcase == '.html' }
-    candidates = %w[_drafts _projects _publications].flat_map { |directory| Dir.glob(File.join(collections, directory, '**', '*')) }
+    candidates = %w[_drafts _projects _publications _albums].flat_map { |directory| Dir.glob(File.join(collections, directory, '**', '*')) }
     candidates.select { |file| File.file?(file) && file.match?(/\.(?:md|markdown|html)\z/i) }.each do |draft|
       body = File.read(draft, encoding: 'UTF-8')
       front_matter = body.match(/\A---\s*\n(.*?)\n---\s*(?:\n|\z)/m)

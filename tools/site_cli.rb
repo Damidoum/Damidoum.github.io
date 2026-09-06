@@ -21,18 +21,24 @@ module PersonalSite
     CONTENT_DIRS = (COLLECTIONS.values + ['content/_posts']).freeze
     IMAGE_DIRS = { 'article' => 'posts', 'project' => 'projects', 'publication' => 'publications' }.freeze
     IMAGE_TYPES = %w[.jpg .jpeg .png .webp .avif].freeze
+    SLUG_PATTERN = /\A[a-z0-9]+(?:-[a-z0-9]+)*\z/.freeze
     HELP = <<~TEXT.freeze
       Écrire et prévisualiser le site
 
         ./site new "Titre" [--type article|project|publication] [--slug nom-court]
         ./site publish <slug-ou-chemin-content> [--date AAAA-MM-JJ]
+        ./site album "Titre" [--location "Lieu"] [--date AAAA-MM-JJ]
+                     [--end-date AAAA-MM-JJ] [--category "Cities"] [--slug nom-court]
         ./site photo <image> --title "Titre" [--location "Lieu"] [--alt "Description"]
-                     [--date AAAA-MM-JJ] [--slug nom-court]
+                     [--album cities --album sunsets] [--date AAAA-MM-JJ] [--slug nom-court]
         ./site preview [--port 4000]
         ./site build
         ./site check
 
       new crée un brouillon et son dossier d’images, sans écraser de fichier.
+      album crée un album thématique, avec un lieu et des dates facultatifs.
+      photo accepte --album plusieurs fois, ou --albums cities,sunsets.
+      Précisez --location pour une photo lorsque ses albums ne partagent pas un même lieu.
       publish prépare la publication locale. Il ne lance ni commit ni envoi sur GitHub.
       preview affiche aussi les brouillons, uniquement sur cet ordinateur.
       check construit le site puis vérifie les pages et les liens locaux.
@@ -54,6 +60,7 @@ module PersonalSite
       when nil, 'help', '--help', '-h' then @out.puts HELP
       when 'new' then new_content(args)
       when 'publish' then publish(args)
+      when 'album' then album(args)
       when 'photo' then photo(args)
       when 'preview' then preview(args)
       when 'build', 'check'
@@ -75,6 +82,7 @@ module PersonalSite
     private
 
     def parse_options(args, banner)
+      raise Error, 'Les arguments doivent être des textes UTF-8 valides.' unless args.all?(&:valid_encoding?)
       parser = OptionParser.new
       parser.banner = banner
       yield parser
@@ -87,14 +95,15 @@ module PersonalSite
     end
 
     def nonempty(value, label)
-      raise Error, "#{label} est obligatoire." unless value.is_a?(String) && !value.strip.empty?
+      raise Error, "#{label} est obligatoire." unless value.is_a?(String)
       raise Error, "#{label} doit être un texte UTF-8 valide." unless value.valid_encoding?
+      raise Error, "#{label} est obligatoire." if value.strip.empty?
       value
     end
 
     def slug_for(title, explicit = nil)
       if explicit
-        unless explicit.match?(/\A[a-z0-9]+(?:-[a-z0-9]+)*\z/)
+        unless explicit.match?(SLUG_PATTERN)
           raise Error, 'Le slug doit contenir uniquement a-z, 0-9 et des tirets entre les mots.'
         end
         return explicit
@@ -317,10 +326,69 @@ module PersonalSite
       @out.puts 'Le contenu reste local. Aucun commit ni envoi sur GitHub n’a été effectué.'
     end
 
-    def photo(args)
+    def album(args)
       options = {}
-      parse_options(args, './site photo <image> --title "Titre" [--location "Lieu"] [--alt "Description"] [--date AAAA-MM-JJ]') do |parser|
+      parse_options(args, './site album "Titre" [--location "Lieu"] [--date AAAA-MM-JJ] [--category "Cities"] [--end-date AAAA-MM-JJ] [--slug nom-court]') do |parser|
+        parser.on('--location LOCATION', 'Lieu de l’album') { |value| options[:location] = value }
+        parser.on('--date DATE', 'Date de début') { |value| options[:date] = value }
+        parser.on('--end-date DATE', 'Date de fin, facultative') { |value| options[:end_date] = value }
+        parser.on('--category CATEGORY', 'Ancienne catégorie facultative') { |value| options[:category] = value }
+        parser.on('--slug SLUG', 'Nom court de l’album et de son adresse') { |value| options[:slug] = value }
+      end
+      require_count(args, 1)
+      title = nonempty(args.first, 'Le titre')
+      location = nonempty(options[:location], 'Le lieu (--location)') if options[:location]
+      date = date_for(options[:date]) if options[:date]
+      end_date = date_for(options[:end_date]) if options[:end_date]
+      raise Error, 'Précisez --date avant de renseigner --end-date.' if end_date && !date
+      raise Error, 'La date de fin doit suivre ou égaler la date de début.' if end_date && end_date < date
+      category = nonempty(options[:category], 'La catégorie (--category)').strip if options[:category]
+      category ||= 'Other' if location || date
+      slug = slug_for(title, options[:slug])
+      path = safe_path("content/_albums/#{slug}.md")
+      raise Error, "Cet album existe déjà : #{slug}. Choisissez --slug." if File.exist?(path)
+      fields = {
+        'layout' => 'photo_album', 'nav' => 'photos', 'title' => title,
+        'cover' => '', 'cover_alt' => title
+      }
+      fields['category'] = category if category
+      fields['location'] = location if location
+      fields['date'] = date.iso8601 if date
+      fields['show_dates'] = false unless date
+      fields['end_date'] = end_date.iso8601 if end_date
+      document = YAML.dump(fields) + "---\n\n<!-- Présentation facultative de cet album, en anglais. -->\n"
+      FileUtils.mkdir_p(File.dirname(path))
+      write_exclusive(path, document)
+      @out.puts "Album créé : #{relative(path)}"
+      date_hint = date ? " --date #{date.iso8601}" : ''
+      location_hint = location ? '' : ' --location "Lieu de prise de vue"'
+      @out.puts "Ajouter une photo : ./site photo \"/chemin/photo.jpg\" --title \"Titre\" --album #{slug}#{location_hint}#{date_hint}"
+      @out.puts 'Choisissez ensuite cover et cover_alt dans le fichier de l’album.'
+    end
+
+    def resolve_album(slug)
+      slug = slug_for('Album', nonempty(slug, 'Le nom de l’album (--album)'))
+      path = safe_path("content/_albums/#{slug}.md")
+      raise Error, "Album introuvable : #{slug}. Créez-le avec ./site album." unless File.file?(path)
+      _opening, _yaml, _tail, fields, _root = front_matter(read_utf8(path), path)
+      nonempty(fields['title'], 'Le titre de l’album')
+      nonempty(fields['category'], 'La catégorie de l’album') if fields['category']
+      nonempty(fields['location'], 'Le lieu de l’album') if fields['location']
+      [slug, fields]
+    end
+
+    def shared_album_field(albums, field)
+      values = albums.map { |_slug, metadata| metadata[field] }.uniq
+      values.first if values.length == 1 && values.first.is_a?(String)
+    end
+
+    def photo(args)
+      options = { albums: [] }
+      parse_options(args, './site photo <image> --title "Titre" [--album cities --album sunsets] [--albums cities,sunsets] [--category "Cities"] [--location "Lieu"] [--alt "Description"] [--date AAAA-MM-JJ]') do |parser|
         parser.on('--title TITLE', 'Titre de la photo') { |value| options[:title] = value }
+        parser.on('--album ALBUM', 'Album existant ; option répétable') { |value| options[:albums] << value }
+        parser.on('--albums ALBUMS', 'Albums existants séparés par des virgules') { |value| options[:albums].concat(nonempty(value, 'Les albums (--albums)').split(',', -1).map(&:strip)) }
+        parser.on('--category CATEGORY', 'Ancienne catégorie facultative (Other par défaut sans album)') { |value| options[:category] = value }
         parser.on('--location LOCATION', 'Lieu') { |value| options[:location] = value }
         parser.on('--alt TEXT', 'Description de l’image') { |value| options[:alt] = value }
         parser.on('--date DATE', 'Date de la photo') { |value| options[:date] = value }
@@ -328,6 +396,12 @@ module PersonalSite
       end
       require_count(args, 1)
       title = nonempty(options[:title], 'Le titre (--title)')
+      albums = options[:albums].map { |album| resolve_album(album) }.uniq { |slug, _metadata| slug }
+      category = options[:category] || shared_album_field(albums, 'category')
+      category = nonempty(category, 'La catégorie (--category)').strip if category
+      category ||= 'Other' if albums.empty?
+      location = options[:location] || shared_album_field(albums, 'location')
+      nonempty(location, 'Le lieu (--location)') if location || !albums.empty?
       date = date_for(options[:date])
       slug = slug_for(title, options[:slug])
       source = File.expand_path(args.first)
@@ -343,12 +417,14 @@ module PersonalSite
       destination = nil
       loop do
         suffix = index == 1 ? '' : "-#{index}"
-        destination = safe_path("images/mountains/#{date.iso8601}-#{slug}#{suffix}#{extension}")
+        destination = safe_path("images/photos/#{date.iso8601}-#{slug}#{suffix}#{extension}")
         break unless File.exist?(destination) || photos.any? { |entry| entry['image'] == '/' + relative(destination) }
         index += 1
       end
       entry = { 'title' => title, 'image' => '/' + relative(destination), 'alt' => options[:alt] || title, 'date' => date.iso8601 }
-      entry['location'] = options[:location] if options[:location]
+      entry['category'] = category if category
+      entry['albums'] = albums.map(&:first) unless albums.empty?
+      entry['location'] = location if location
       entry.merge!('width' => dimensions[0], 'height' => dimensions[1]) if dimensions
       metadata = YAML.dump(photos + [entry])
       FileUtils.mkdir_p(File.dirname(destination))
@@ -373,10 +449,13 @@ module PersonalSite
         entry.is_a?(Hash) && entry.keys.all? { |key| key.is_a?(String) } &&
           %w[image title].all? { |key| entry[key].is_a?(String) && !entry[key].strip.empty? } &&
           %w[alt location].all? { |key| !entry.key?(key) || entry[key].nil? || entry[key].is_a?(String) } &&
+          %w[album thumbnail].all? { |key| !entry.key?(key) || entry[key].nil? || (entry[key].is_a?(String) && entry[key].valid_encoding? && !entry[key].strip.empty?) } &&
+          (!entry.key?('albums') || (entry['albums'].is_a?(Array) && !entry['albums'].empty? && entry['albums'].all? { |slug| slug.is_a?(String) && slug.valid_encoding? && slug.match?(SLUG_PATTERN) })) &&
+          (!entry.key?('category') || entry['category'].nil? || (entry['category'].is_a?(String) && entry['category'].valid_encoding? && !entry['category'].strip.empty?)) &&
           %w[width height].all? { |key| !entry.key?(key) || (entry[key].is_a?(Integer) && entry[key].positive?) } &&
           (!entry.key?('date') || entry['date'].is_a?(Date) || entry['date'].is_a?(Time) || entry['date'].is_a?(String))
       end
-      raise Error, 'settings/photos.yml doit contenir une liste de photos avec image et title.' unless valid
+      raise Error, 'settings/photos.yml doit contenir une liste de photos avec image et title ; albums doit être une liste de slugs non vides et category un texte non vide si ces champs sont renseignés.' unless valid
     end
 
     def image_dimensions(path, extension)
@@ -460,7 +539,7 @@ module PersonalSite
       require_count(args, 0)
       raise Error, 'Port invalide : choisissez un nombre de 1 à 65535.' unless port.match?(/\A\d+\z/) && port.to_i.between?(1, 65_535)
       @out.puts "Prévisualisation locale : http://127.0.0.1:#{port.to_i}"
-      execute(['bundle', 'exec', 'jekyll', 'serve', '--drafts', '--unpublished', '--livereload', '--destination', 'local/preview', '--host', '127.0.0.1', '--port', port.to_i.to_s], true)
+      execute(['bundle', 'exec', 'jekyll', 'serve', '--drafts', '--unpublished', '--livereload', '--force_polling', '--destination', 'local/preview', '--host', '127.0.0.1', '--port', port.to_i.to_s], true)
     end
 
     def execute(argv, replace = false)

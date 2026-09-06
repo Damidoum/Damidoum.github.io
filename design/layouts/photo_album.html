@@ -1,0 +1,39 @@
+---
+layout: base
+---
+{% assign photos = site.data.photos | where_exp: 'photo', 'photo.albums contains page.slug' %}
+{% assign legacy_photos = site.data.photos | where: 'album', page.slug %}
+{% assign photos = photos | concat: legacy_photos | uniq %}
+<div class="wrap">
+  <header class="page-heading album-heading">
+    <a class="article-back" href="{{ '/photos/' | relative_url }}">← Photos</a>
+    {% if page.published == false %}<span class="draft-label">Draft</span>{% endif %}
+    <h1>{{ page.title | escape }}</h1>
+    <div class="album-details">
+      {% if page.location %}<span>{{ page.location | escape }}</span>{% endif %}
+      {% if page.show_dates != false and page.date %}<span><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%-d %B %Y' }}</time>{% if page.end_date %}{% assign first_date = page.date | date: '%Y-%m-%d' %}{% assign last_date = page.end_date | date: '%Y-%m-%d' %}{% if last_date != first_date %} – <time datetime="{{ page.end_date | date: '%Y-%m-%d' }}">{{ page.end_date | date: '%-d %B %Y' }}</time>{% endif %}{% endif %}</span>{% endif %}
+      <span data-photo-count aria-live="polite">{{ photos.size }} {% if photos.size == 1 %}photo{% else %}photos{% endif %}</span>
+    </div>
+  </header>
+  {% assign album_description = content | strip %}
+  {% if album_description != '' %}<div class="album-description prose">{{ content }}</div>{% endif %}
+  {% if photos.size > 0 %}
+  {% assign locations = photos | map: 'location' | compact | uniq | sort %}
+  {% if locations.size > 1 %}
+  <div class="photo-location-filter" hidden>
+    <label for="photo-location">Place</label>
+    <select id="photo-location" aria-controls="photo-gallery">
+      <option value="">All places</option>
+      {% for location in locations %}{% if location != '' %}<option value="{{ location | escape }}">{{ location | escape }}</option>{% endif %}{% endfor %}
+    </select>
+  </div>
+  {% endif %}
+  <div id="photo-gallery" class="photo-grid album-photos">
+    {% for photo in photos %}
+    {% include site/photo.html photo=photo filterable=true %}
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="empty-message">Photographs coming soon.</p>
+  {% endif %}
+</div>

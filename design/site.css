@@ -120,7 +120,7 @@ main:focus { outline: none; }
 .prose code { font-size: .9em; }
 .prose table { border-collapse: collapse; display: block; overflow-x: auto; max-width: 100%; }
 .prose td, .prose th { border-bottom: 1px solid var(--line); padding: .6rem 1rem; text-align: left; }
-.prose .MathJax, mjx-container[display="true"] { max-width: 100%; overflow-x: auto; overflow-y: hidden; padding-block: .35rem; }
+.prose mjx-container[display="true"] { max-width: 100%; overflow-x: auto; overflow-y: hidden; padding-block: .35rem; }
 .article-heading { max-width: 890px; margin-inline: auto; padding-bottom: 38px; border-bottom: 1px solid var(--line); margin-bottom: 40px; }
 .article-heading h1 { font-size: clamp(2.4rem, 4.4vw, 3.6rem); }
 .article-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; font: .75rem var(--mono); color: var(--muted); }
@@ -140,9 +140,28 @@ main:focus { outline: none; }
 .gallery-feature { position: relative; margin-bottom: 2.5rem; }
 .gallery-feature img { width: 100%; max-height: 650px; object-fit: cover; aspect-ratio: 1.8; border-radius: var(--radius); }
 .gallery-feature figcaption { display: flex; justify-content: space-between; gap: 2rem; padding: 1rem 0; color: var(--muted); font-size: .75rem; }
-.photo-grid { columns: 2; column-gap: 24px; }
-.photo-grid figure { break-inside: avoid; margin-bottom: 28px; }
-.photo-grid img { width: 100%; border-radius: var(--radius); }
+.album-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 28px; }
+.album-card { min-width: 0; }
+.album-cover { display: block; position: relative; width: 100%; aspect-ratio: 3 / 2; overflow: hidden; border-radius: var(--radius); background: var(--line); }
+.album-cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .35s; }
+.album-card:hover .album-cover img { transform: scale(1.025); }
+.album-meta { display: flex; justify-content: space-between; gap: 1rem; margin: 1rem 0 .5rem; font-size: .75rem; color: var(--muted); }
+.album-meta > span:last-child { flex-shrink: 0; }
+.album-card h2 { font: 1.2rem/1.4 var(--body); letter-spacing: -.025em; margin-bottom: .35rem; }
+.album-card h2 a { text-decoration: none; }
+.album-card > p { color: var(--muted); font-size: .875rem; margin-bottom: 0; }
+.album-heading { max-width: none; }
+.album-details { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; color: var(--muted); font-size: .875rem; }
+.album-description { margin: 0 0 2.5rem; }
+.loose-photos > h2 { font: 1.8rem/1.3 var(--display); margin-bottom: 1.5rem; }
+.photo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 24px; }
+.photo-location-filter { display: flex; align-items: center; flex-wrap: wrap; gap: .75rem; margin-bottom: 2rem; font-size: .875rem; }
+.photo-location-filter label { color: var(--muted); }
+.photo-location-filter select { max-width: 100%; padding: .5rem 2rem .5rem .75rem; color: var(--ink); background-color: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); font: inherit; }
+.photo-grid figure { min-width: 0; margin: 0; }
+.photo-grid a { display: block; position: relative; width: 100%; aspect-ratio: 1; overflow: hidden; border-radius: var(--radius); background: var(--line); }
+.photo-grid img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .35s; }
+.photo-grid a:hover img { transform: scale(1.025); }
 .photo-grid figcaption { margin-top: .6rem; font-size: .875rem; color: var(--muted); }
 .photo-grid figcaption span { display: block; font-size: .75rem; }
 .cv-page .prose { margin-left: 0; }
@@ -156,6 +175,7 @@ main:focus { outline: none; }
   .hero-actions { flex-wrap: wrap; }
   .identity { font-size: .875rem; }
   .note-grid { gap: 20px; }
+  .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 760px) {
   .wrap { width: calc(100% - 40px); }
@@ -182,11 +202,12 @@ main:focus { outline: none; }
   .project-row { grid-template-columns: 1fr 20px; gap: .5rem; }
   .project-row time { grid-column: 1 / -1; }
   .gallery-feature figcaption { flex-direction: column; gap: .3rem; }
-  .photo-grid { columns: 1; }
+  .album-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 20px; }
   .prose { font-size: 1rem; }
 }
 @media (max-width: 440px) {
   .note-grid, .home-notebook .note-grid { grid-template-columns: 1fr; }
+  .album-grid, .photo-grid { grid-template-columns: 1fr; }
   .section-heading { flex-direction: column; gap: .8rem; }
   .section-heading > .text-link { padding-top: 0; }
   .note-cover, .home-notebook .note-cover { aspect-ratio: 1.75; }

@@ -42,7 +42,10 @@ modification sur GitHub.
 | Texte de recherche, CV, pages fixes | `content/pages/` |
 | Présentation, portrait, email et liens | [settings/profile.yml](settings/profile.yml) |
 | Menu | [settings/navigation.yml](settings/navigation.yml) |
-| Photos de montagne et légendes | [settings/photos.yml](settings/photos.yml) |
+| Rubriques photo : titre et couverture | `content/_albums/` |
+| Photos : rubriques, lieux, dates, légendes et ordre | [settings/photos.yml](settings/photos.yml) |
+| Photos exportées pour le site | `images/photos/` |
+| Photos en attente ou non retenues, hors de Git et du site | `PHOTO/` |
 | Images et vidéos des articles | `images/` |
 | PDF du CV et bibliographie | `files/` |
 | Couleurs, police et espacements | [design/site.css](design/site.css) |
@@ -53,12 +56,42 @@ modification sur GitHub.
 ```sh
 ./site new "A research project" --type project
 ./site new "A paper title" --type publication
-./site photo "/chemin/ma-photo.jpg" --title "Mont Blanc" --location "Alps"
 ./site --help
 ```
 
 Les nouveaux projets et publications démarrent aussi en brouillon. Utilise
 `./site publish leur-slug` pour les rendre publiables.
+
+## Ajouter une photo
+
+La galerie comporte trois rubriques : **Cities**, **Mountains** et **Sunsets**.
+Chaque photo garde son lieu et sa date de prise de vue. Le filtre **Place**
+permet de retrouver les images d’un lieu dans une rubrique.
+
+```sh
+./site photo "/chemin/ma-photo.jpg" --title "The Seine" --alt "Evening light on the Seine" --location "Paris, France" --date 2026-06-12 --album cities --album sunsets
+./site preview
+```
+
+La commande copie l’image une seule fois dans `images/photos/` et l’ajoute à
+`settings/photos.yml` avec `albums: [cities, sunsets]`. Elle apparaît dans les
+deux rubriques ; pour une seule rubrique, utilise simplement `--album mountains`,
+par exemple. Les rubriques doivent déjà exister.
+
+Modifie les légendes, lieux, dates et associations dans `settings/photos.yml`.
+L’ordre des blocs donne l’ordre d’affichage ; les photos actuelles sont classées
+du plus récent au plus ancien. Les titres et couvertures des rubriques se
+modifient dans `content/_albums/`, avec les champs `cover` et `cover_alt`.
+
+Utilise `PHOTO/` pour les nouvelles photos à trier et celles qui ne sont pas
+utilisées sur le site. Ce dossier reste local, hors de Git et du site ; ce n’est
+pas une archive permanente. Les exports sélectionnés vont dans `images/photos/`.
+Après vérification de l’export dans l’aperçu, range sa source déjà utilisée en
+dehors de `PHOTO/`. Le dossier prévu pour cette sélection est
+`local/photo-originals-used-2026-09-06/`, également hors de Git et du site.
+Les exports retirés du site sont conservés dans
+`local/removed-photo-assets-2026-09-06/`. La commande `photo` copie les fichiers
+sans les redimensionner et ne fait pas ce rangement automatiquement.
 
 Le [guide de rédaction](docs/writing.md) explique les vignettes, les formules,
 les vidéos, les dates et la galerie. Le [guide du design](docs/design.md)

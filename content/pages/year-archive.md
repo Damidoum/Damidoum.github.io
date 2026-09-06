@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: The notebook
+title: Blog
 permalink: /year-archive/
 redirect_to: /blog/
 sitemap: false

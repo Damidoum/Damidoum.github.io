@@ -3,109 +3,88 @@ layout: archive
 title: "CV"
 permalink: /cv/
 nav: cv
-description: Education and research experience.
+description: Education, research experience, and technical skills.
 redirect_from:
   - /resume
 ---
 
 ## Education
 
----
+### M.Sc. Mathematics, Vision and Learning (MVA)
 
-### Master MVA – "Mathématiques, Vision, Apprentissage"
+_École normale supérieure Paris-Saclay · Gif-sur-Yvette, France · 2025-2026_
 
-_École Normale Supérieure Paris-Saclay | Paris, France_
-2025–2026
+- Relevant coursework: optimal transport, convex optimization, computational statistics, geometric data analysis, graph machine learning, random matrix theory, inverse problems, generative models, stochastic calculus and robotics.
 
-- Main courses: Advanced Learning for Text and Graph Data, Geometric Data Analysis, Optimal Transport, Robotics, Computational Statistics, Convex Optimization.
+### Diplôme d'ingénieur (M.Sc. equivalent), Mathematics and Computer Science
 
-### Master’s Degree in Science and Executive Engineering, Major in Mathematics and Computer Science
+_Mines Paris - PSL · Paris, France · 2022-2026_
 
-_Mines Paris – PSL | Paris, France_
-2022–2026
+- Relevant coursework: measure theory, probability, statistics, machine learning, generative models, functional analysis and signal processing.
 
-- Main courses: Machine & Deep Learning, Generative Models, Probability Theory, Advanced Statistics, Applied Mathematics, Computer Science (Python, C++, Haskell).
+### CPGE MPSI-MP* - intensive mathematics and physics program
 
-### Preparatory Classes MPSI - MP\*
+_Lycée Hoche · Versailles, France · 2020-2022_
 
-_Lycée Hoche | Versailles, France_
-2020–2022
+- TIPE: Radon transform for tomography.
 
-- 2 years of intensive preparation for French Grande Écoles exams (Ranked top 2% in national entrance exams).
-- Research project: Radon Transform for tomography.
+## Research Experience
 
----
+### Research Intern - Weak error analysis for discrete diffusion samplers
 
-## Research & Professional Experience
+_École normale supérieure - Department of Mathematics and Applications (DMA) · Paris, France · 2026-present_
 
-### Machine Learning Research Intern – Deep Learning Generalization Theory
+Supervisors: Julie Delon, Rémi Gribonval and Gabriel Peyré.
 
-_Inria (Supervised by A. Gonon, R. Gribonval, and B. Guedj) | Lyon, France & London, UK_
-2025 (4 months)
+- Derived the leading weak-error term of the matrix Euler discretization for Bayesian time reversals of finite-state continuous-time Markov chains.
+- Obtained a spectral representation showing how the bias depends on the corruption generator, noise schedule, data distribution, and test observable.
+- Analyzed the interaction between terminal mismatch, reverse-rate perturbations, and Euler bias on a two-state graph.
 
-- Conducted research on the theoretical foundations of deep learning generalization.
-- Leveraged symmetries of ReLU networks (weight-rescaling invariances) to improve standard PAC-Bayesian bounds.
-- Implemented, and evaluated the derived method using PyTorch Lightning and wandb.
-- Achieved a 2× improvement over standard bounds on MNIST/CIFAR-10, successfully transforming vacuous bounds into non-vacuous ones.
-- First author of a research preprint ([arxiv.org/abs/2509.26149](https://arxiv.org/abs/2509.26149)).
+### Research Intern - PAC-Bayesian generalization bounds
 
-### AI Research & Software Engineering Intern – Industrial Vision
+_Inria · Lyon, France / London, UK · 2025 (4 months)_
 
-_Scortex – TRIGO Group | Paris, France_
-2024–2025 (6 months)
+Supervisors: Antoine Gonon, Rémi Gribonval, and Benjamin Guedj.
 
-- Adapted advanced computer vision models (e.g., diffusion/reconstruction methods) for high-speed industrial anomaly detection.
-- Systematically fine-tuned and evaluated model performance across client use cases using PyTorch and MLflow.
-- Industrialized promising models into the product codebase, prioritizing speed optimization to meet strict real-time processing requirements.
+- Studied neuron-wise rescaling symmetries of ReLU networks and their effect on PAC-Bayes complexity terms.
+- Formulated PAC-Bayes bounds in an invariant lifted representation and analyzed their guarantees through data processing.
+- Implemented KL-based optimization procedures and evaluated them on neural-network experiments using PyTorch Lightning and Weights & Biases.
 
-### Research Intern – Programmable Metamaterials & Optimization
+### Research Intern - Programmable origami metamaterials
 
-_Harvard SEAS (Bertoldi Group) | Boston, USA_
-2024 (5 months)
+_Harvard SEAS - Bertoldi Group · Boston, USA · 2024 (5 months)_
 
-- Conducted research on programmable origami metamaterials, including mathematical modeling of origami pattern compatibility, origami fabrication and state-of-the-art analysis.
-- Developed a Python-based automation tool for the design-to-fabrication origami pipeline (.dxf files generation), accelerating the research process.
-- Explored multi-stability transitions of origami through Abaqus simulation and experimental validation using macro/micro scale prototypes; results contributed to an ongoing paper.
+- Modeled compatibility constraints for programmable origami patterns.
+- Studied multistable transitions using Abaqus simulations and experimental validation on macro- and microscale prototypes.
+- Implemented a Python pipeline generating DXF fabrication files from geometric design parameters.
+
+## Preprint
+
+{% for publication in site.publications reversed %}
+{% if publication.citation %}
+- {{ publication.citation }} [Read the paper]({{ publication.paperurl }}).
+{% else %}
+- {{ publication.authors }}. [{{ publication.title }}]({{ publication.paperurl }}). {{ publication.venue }}, {{ publication.date | date: '%Y' }}.
+{% endif %}
+{% endfor %}
+
+## Additional Experience
+
+### Computer Vision Intern
+
+_Scortex - TRIGO Group · Paris, France · 2024-2025 (6 months)_
+
+- Adapted diffusion- and distillation-based computer vision methods for high-speed industrial anomaly detection.
+- Benchmarked and deployed selected models under real-time constraints using PyTorch and MLflow.
 
 ### Oral Examiner in Mathematics
 
-_French Ministry of Education | Versailles, France_
-2023–2024 (6 months)
+_French Ministry of Education · Versailles, France · 2023-2024 (6 months)_
 
-- Mentored and assessed advanced STEM students preparing for the competitive oral exams of the top engineering schools.
+- Prepared and assessed oral mathematics examinations for students preparing engineering-school entrance examinations.
 
-### Corporate Relations & Partnerships Manager (Volunteering)
+## Technical Skills
 
-_Trium Forum Organization | Paris, France_
-2023–2024 (1 year)
-
-- Managed a team coordinating 100+ corporate partners for a forum with €1.3M turnover.
-
----
-
-## Technical & Soft Skills
-
-### Technical Skills
-
-- **Programming**: _Python_ (Advanced), _C/C++_ (Basics), Functional programming (Learning Haskell / Lean).
-- **Machine Learning**: PyTorch, PyTorch Lightning, Transformers, Sklearn, Numpy, Weights & Biases.
-- **Tools**: Git, Bash, Linux, Docker, GCP, LaTeX.
-
-### Soft Skills & Hobbies
-
-- **Languages**: French (Native), English (Advanced).
-- **Hobbies**: Trail, Running, Climbing, Mountaineering, Chess, Cooking, Photography.
-
----
-
-## Publications
-
-{% for publication in site.publications reversed %}
-- [{{ publication.title }}]({{ publication.paperurl }}), {{ publication.date | date: '%Y' }}.
-{% endfor %}
-
----
-
-<div class="cv-download-links">
-  <a href="{{ '/files/cv.pdf' | relative_url }}" class="btn btn--primary">Download CV as PDF</a>
-</div>
+- **Programming:** Python (PyTorch, PyTorch Lightning, NumPy, scikit-learn), working knowledge of C/C++.
+- **Tools:** Git, Linux, Docker, LaTeX, MLflow, Weights & Biases.
+- **Languages:** French (native), English (TOEFL iBT: 110/120).

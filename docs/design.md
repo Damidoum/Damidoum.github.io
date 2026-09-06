@@ -4,7 +4,7 @@ Le design est indépendant des textes :
 
 - `design/site.css` : variables de couleur, polices et espacements en tête de
   fichier, puis styles des composants et adaptations aux petits écrans.
-- `design/site.js` : ouverture du menu sur mobile.
+- `design/site.js` : ouverture du menu sur mobile et filtre des photos par lieu.
 - `design/layouts/base.html` : cadre commun, navigation, métadonnées et pied de page.
 - `design/layouts/home.html` : accueil, qui lit `settings/profile.yml`.
 - `design/layouts/single.html` : articles et publications.
@@ -28,3 +28,7 @@ Les contrôles n’évaluent pas visuellement la mise en page.
 Les tests des commandes d’écriture se lancent avec
 `ruby tools/tests/site_cli_test.rb` (Minitest nécessaire), ceux du vérificateur avec
 `ruby tools/tests/check_site_test.rb`. Ils travaillent dans des dossiers temporaires.
+Le rendu Markdown des formules est vérifié avec
+`bundle exec ruby tools/tests/math_render_test.rb`.
+Les albums photo et les images présentes dans plusieurs rubriques sont vérifiés
+avec `bundle exec ruby tools/tests/photo_gallery_test.rb`.

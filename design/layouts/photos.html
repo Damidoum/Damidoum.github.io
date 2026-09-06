@@ -1,0 +1,52 @@
+---
+layout: base
+---
+{% assign albums = site.albums | sort: 'title' %}
+{% assign unassigned_photos = '' | split: ',' %}
+{% for photo in site.data.photos %}
+  {% if photo.album == nil or photo.album == empty %}
+    {% if photo.albums == nil or photo.albums == empty %}
+      {% assign unassigned_photos = unassigned_photos | push: photo %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+<div class="wrap">
+  <header class="page-heading">
+    <h1>{{ page.title | escape }}</h1>
+    {{ content }}
+  </header>
+    {% if albums.size > 0 %}
+    <div class="album-grid">
+      {% for album in albums %}
+      {% assign album_photos = site.data.photos | where_exp: 'photo', 'photo.albums contains album.slug' %}
+      {% assign legacy_photos = site.data.photos | where: 'album', album.slug %}
+      {% assign album_photos = album_photos | concat: legacy_photos | uniq %}
+      {% assign cover_photo = album_photos | where: 'image', album.cover | first %}
+      {% assign cover_image = cover_photo.thumbnail | default: album.cover | default: album_photos.first.thumbnail | default: album_photos.first.image %}
+      {% assign cover_alt = album.cover_alt | default: cover_photo.alt | default: album_photos.first.alt | default: album.title %}
+      <article class="album-card">
+        <a class="album-cover" href="{{ album.url | relative_url }}" tabindex="-1" aria-hidden="true">
+          {% if cover_image %}<img src="{{ cover_image | relative_url }}" alt="{{ cover_alt | escape }}"{% if album.cover_position %} style="object-position: {{ album.cover_position | escape }}"{% endif %} loading="lazy">{% endif %}
+        </a>
+        <div class="album-meta">
+          <span>{{ album_photos.size }} {% if album_photos.size == 1 %}photo{% else %}photos{% endif %}</span>
+        </div>
+        <h2><a href="{{ album.url | relative_url }}">{{ album.title | escape }}</a></h2>
+        {% if album.location %}<p>{{ album.location | escape }}</p>{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if unassigned_photos.size > 0 %}
+    <section class="loose-photos{% if albums.size > 0 %} section-space{% endif %}" aria-label="Individual photographs">
+      {% if albums.size > 0 %}<h2>Other photographs</h2>{% endif %}
+      <div class="photo-grid">
+        {% for photo in unassigned_photos %}
+        {% include site/photo.html photo=photo %}
+        {% endfor %}
+      </div>
+    </section>
+    {% elsif albums.size == 0 %}
+  <p class="empty-message">Photographs coming soon.</p>
+  {% endif %}
+</div>

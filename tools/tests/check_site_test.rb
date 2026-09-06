@@ -66,6 +66,9 @@ Dir.mktmpdir('site-check-tests') do |root|
   write(File.join(output, 'settings', 'profile.yml'))
   run.call(false, 'settings/profile.yml: source or authoring file was published')
   FileUtils.rm_r(File.join(output, 'settings'))
+  write(File.join(output, 'PHOTO', 'original.raw'))
+  run.call(false, 'PHOTO/original.raw: source or authoring file was published')
+  FileUtils.rm_r(File.join(output, 'PHOTO'))
   write(File.join(output, 'design', 'layouts', 'site.html'))
   run.call(false, 'design/layouts/site.html: source or authoring file was published')
   FileUtils.rm_r(File.join(output, 'design'))
@@ -82,7 +85,7 @@ Dir.mktmpdir('site-check-tests') do |root|
   write(File.join(output, 'blog', '2026', '09', '05', 'unpublished', 'index.html'))
   run.call(false, 'matching draft slug was published at blog/2026/09/05/unpublished/index.html')
   FileUtils.rm_r(File.join(output, 'blog', '2026'))
-  %w[projects publications].each do |collection|
+  %w[projects publications albums].each do |collection|
     unpublished = File.join(root, 'content', "_#{collection}", 'future-work.md')
     write(unpublished, "---\ntitle: Future work\npublished: false\npermalink: /#{collection}/future-work/\n---\nPrivate text")
     run.call(true, 'Vérification réussie')

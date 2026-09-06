@@ -21,20 +21,16 @@ This failure motivated the shift toward frameworks that incorporate the learning
 ## The PAC-Bayes Framework: A Localized Measure of Complexity
 
 The **PAC-Bayes** framework offers a more adaptive approach. Instead of analyzing a single deterministic model, it analyzes a **distribution over models** $$Q$$ (the posterior), comparing it against a reference distribution $$P$$ (the prior). This framework yields a bound that is **data-dependent** and often much tighter:
-<p>
 $$
 \text{Expected Risk } (L) \leq \text{Empirical Risk } (\hat{L}_{\mathcal{S}}) + \text{Complexity Penalty}
 $$
-</p>
 
-The **Complexity Penalty** is where the problem lies. It is primarily driven by the **Kullback-Leibler (KL) Divergence** 
-$$D_{KL}(Q||P)$$ between the learned posterior $$Q$$ and the prior $$P$$ in the high-dimensional **weight space** $$\mathcal{W}$$. 
+The **Complexity Penalty** is where the problem lies. It is primarily driven by the **Kullback-Leibler (KL) Divergence**
+$$D_{KL}(Q\Vert P)$$ between the learned posterior $$Q$$ and the prior $$P$$ in the high-dimensional **weight space** $$\mathcal{W}$$.
 
-<p>
 $$
-\text{Complexity Penalty} \propto \sqrt{\frac{D_{KL}(Q||P)}{|\mathcal{S}|}}
+\text{Complexity Penalty} \propto \sqrt{\frac{D_{KL}(Q\Vert P)}{|\mathcal{S}|}}
 $$
-</p>
 
 The logic is sound: if the learned distribution $$Q$$ is simple and close to a chosen prior $$P$$ (low $$D_{KL}$$), the model hasn't used much capacity and should generalize well. The problem is that the **weight space is redundant**.
 
@@ -48,7 +44,7 @@ This property creates a redundancy known as **rescaling invariance**. For any hi
 ![](/images/img_rescaling.jpg "Rescaling invariances of ReLU networks")
 
 **The devastating consequence for PAC-Bayes:**
-Because the standard bound measures complexity in the raw weight space $$\mathcal{W}$$, two weight distributions $$Q$$ and $$P$$ that are functionally identical (i.e., they define the same network function $$f$$) can be arbitrarily far apart in terms of $$D_{KL}(Q||P)$$ simply by choosing different internal scaling factors $$\lambda$$.
+Because the standard bound measures complexity in the raw weight space $$\mathcal{W}$$, two weight distributions $$Q$$ and $$P$$ that are functionally identical (i.e., they define the same network function $$f$$) can be arbitrarily far apart in terms of $$D_{KL}(Q\Vert P)$$ simply by choosing different internal scaling factors $$\lambda$$.
 
 This means the $$D_{KL}$$ term—the supposed measure of functional complexity—can be **artificially inflated** by simple scaling, leading to generalization bounds that are **vacuously large** and theoretically useless, despite the function being simple and generalizing well in practice. The complexity measure is fundamentally misaligned with the functional equivalence of the models.
 
@@ -59,15 +55,13 @@ To restore the validity of the PAC-Bayes framework, we must analyze complexity i
 The solution involves defining a map, or "**lift**" $$\psi: \mathcal{W} \rightarrow \mathcal{Z}$$, which projects the high-dimensional, redundant weight space $$\mathcal{W}$$ down into a lower-dimensional, **symmetry-free space** $$\mathcal{Z}$$. Any two weight vectors belonging to the same functional equivalence class (i.e., related by a rescaling operation) will be mapped to the same point $$\psi(w) = \psi(\diamond^{\lambda}(w))$$. A special candidate for this lift is called the **path-lifting**.
 
 **The Core Result:**
-We formally prove that the PAC-Bayes bound holds when the complexity is measured using the **lifted divergence** $$D_{KL}(\psi_\sharp Q||\psi_\sharp P)$$ in this new space $$\mathcal{Z}$$.
+We formally prove that the PAC-Bayes bound holds when the complexity is measured using the **lifted divergence** $$D_{KL}(\psi_\sharp Q\Vert \psi_\sharp P)$$ in this new space $$\mathcal{Z}$$.
 
-Furthermore, we use the **Data Processing Inequality (DPI)** from information theory to establish the superiority of this approach: applying any function (like our lift $\psi$) to two random variables (the weight distributions $$Q$$ and $$P$$) can only reduce or preserve the information distance between them. This yields the crucial theoretical guarantee:
+Furthermore, we use the **Data Processing Inequality (DPI)** from information theory to establish the superiority of this approach: applying any function (like our lift $$\psi$$) to two random variables (the weight distributions $$Q$$ and $$P$$) can only reduce or preserve the information distance between them. This yields the crucial theoretical guarantee:
 
-<p>
 $$
-D_{KL}(\psi_\sharp Q||\psi_\sharp P) \le D_{KL}(Q||P)
+D_{KL}(\psi_\sharp Q\Vert \psi_\sharp P) \le D_{KL}(Q\Vert P)
 $$
-</p>
 
 This guarantees that the invariant, lifted bound is **always tighter** than the original weight-space bound, formally demonstrating that correcting for symmetries leads to better theoretical guarantees.
 
@@ -75,11 +69,9 @@ This guarantees that the invariant, lifted bound is **always tighter** than the 
 
 While calculating the exact optimal lifted KL is challenging, the DPI provides a computable upper bound that is guaranteed to be tighter than the original: the **Deterministic Rescaling Infimum**. This term involves minimizing the KL divergence across all possible scaling factors $$\lambda$$.
 
-<p>
 $$
-D_{KL}(\psi_\sharp Q||\psi_\sharp P)\le \inf_{\lambda,\lambda^{\prime}}D_{KL}(\diamond_\sharp^{\lambda}Q||\diamond_\sharp^{\lambda^{\prime}}P) \leq D_{KL}(Q||P)
+D_{KL}(\psi_\sharp Q\Vert \psi_\sharp P)\le \inf_{\lambda,\lambda^{\prime}}D_{KL}(\diamond_\sharp^{\lambda}Q\Vert \diamond_\sharp^{\lambda^{\prime}}P) \leq D_{KL}(Q\Vert P)
 $$
-</p>
 
 We developed an efficient and provably convergent **Block Coordinate Descent (BCD) algorithm** to find the optimal scaling vector $$\lambda^*$$ that minimizes this proxy bound.
 

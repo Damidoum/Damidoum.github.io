@@ -20,6 +20,9 @@ collections:
   projects:
     output: true
     permalink: /:collection/:path/
+  albums:
+    output: true
+    permalink: /photos/:path/
 
 defaults:
   - scope:
@@ -40,7 +43,7 @@ defaults:
       type: projects
     values:
       layout: single
-      nav: projects
+      nav: notebook
       math: true
       topic: Project notes
   - scope:
@@ -50,6 +53,12 @@ defaults:
       layout: single
       nav: research
       math: true
+  - scope:
+      path: ""
+      type: albums
+    values:
+      layout: photo_album
+      nav: photos
 
 include:
   - files
@@ -68,9 +77,11 @@ exclude:
   - site
   - tools
   - docs
-  - settings
-  - design/layouts
-  - design/includes
+  - PHOTO
+  # Exclude generated copies of these files, while keeping them watched in preview.
+  - settings/**
+  - design/layouts/**
+  - design/includes/**
 
 encoding: utf-8
 markdown: kramdown

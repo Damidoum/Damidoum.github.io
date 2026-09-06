@@ -1,3 +1,613 @@
-# Ajouter une photo : ./site photo "/chemin/photo.jpg" --title "Aiguille du Midi"
-# L'ordre de cette liste définit l'ordre dans la galerie. Voir docs/writing.md.
-[]
+# Photos et légendes, dans l’ordre d’affichage.
+# albums: [cities, mountains, sunsets] permet plusieurs rubriques sans copier l’image.
+# Couvertures : content/_albums/. Nouveaux originaux : PHOTO/.
+# Originaux archivés : local/photo-originals-used-2026-09-06/.
+- title: Forested valley
+  image: "/images/photos/queyras-2026/img_0109.jpg"
+  thumbnail: "/images/photos/queyras-2026/img_0109-thumb.jpg"
+  alt: A forested valley opening towards distant mountains under scattered clouds.
+  location: Queyras, France
+  date: '2026-08-18'
+  width: 2400
+  height: 1600
+  albums:
+  - mountains
+- title: Ridges
+  image: "/images/photos/queyras-2026/img_0003.jpg"
+  thumbnail: "/images/photos/queyras-2026/img_0003-thumb.jpg"
+  alt: Successive rocky mountain ridges beneath a bank of clouds.
+  location: Queyras, France
+  date: '2026-08-14'
+  width: 2400
+  height: 1600
+  albums:
+  - mountains
+- title: Lake and valley
+  image: "/images/photos/queyras-2026/img_9947.jpg"
+  thumbnail: "/images/photos/queyras-2026/img_9947-thumb.jpg"
+  alt: A mountain lake below a rocky slope, with a long valley beyond.
+  location: Queyras, France
+  date: '2026-08-13'
+  width: 2400
+  height: 1600
+  albums:
+  - mountains
+- title: Mountain shelter
+  image: "/images/photos/queyras-2026/img_9941.jpg"
+  thumbnail: "/images/photos/queyras-2026/img_9941-thumb.jpg"
+  alt: A small green shelter beside a path through an open alpine meadow.
+  location: Queyras, France
+  date: '2026-08-13'
+  width: 2400
+  height: 1600
+  albums:
+  - mountains
+- title: Mountain slope through the trees
+  image: "/images/photos/queyras-2026/img_9991.jpg"
+  thumbnail: "/images/photos/queyras-2026/img_9991-thumb.jpg"
+  alt: Dark conifers frame a sunlit grassy mountain slope and a pale rocky ridge.
+  location: Queyras, France
+  date: '2026-08-13'
+  width: 2400
+  height: 1600
+  albums:
+  - mountains
+- title: Evening in the valley
+  image: "/images/photos/queyras-2026/img_9938.jpg"
+  thumbnail: "/images/photos/queyras-2026/img_9938-thumb.jpg"
+  alt: A sunset sky framed by the dark silhouettes of two mountains.
+  location: Queyras, France
+  date: '2026-08-12'
+  width: 2400
+  height: 1600
+  albums:
+  - mountains
+  - sunsets
+- title: Above the lake
+  image: "/images/photos/queyras-2026/img_9906.jpg"
+  thumbnail: "/images/photos/queyras-2026/img_9906-thumb.jpg"
+  alt: A blue lake among rocky ridges and distant mountain ranges.
+  location: Queyras, France
+  date: '2026-08-10'
+  width: 2400
+  height: 1600
+  albums:
+  - mountains
+- title: Forest path
+  image: "/images/photos/vosges-2026/img_9524.jpg"
+  thumbnail: "/images/photos/vosges-2026/img_9524-thumb.jpg"
+  alt: A narrow path winding between tall conifer trunks in warm sunlight.
+  location: Vosges, France
+  date: '2026-04-02'
+  width: 1600
+  height: 2400
+  albums:
+  - mountains
+- title: Snow on the wooded hills
+  image: "/images/photos/vosges-2026/img_9519.jpg"
+  thumbnail: "/images/photos/vosges-2026/img_9519-thumb.jpg"
+  alt: Dark foreground trees frame a snow-speckled wooded hill beneath a clear blue
+    sky.
+  location: Vosges, France
+  date: '2026-04-02'
+  width: 2400
+  height: 1600
+  albums:
+  - mountains
+- title: Snow on the ridge
+  image: "/images/photos/vosges-2026/img_9518.jpg"
+  thumbnail: "/images/photos/vosges-2026/img_9518-thumb.jpg"
+  alt: A sunlit snowy ridge above dark forested hills and beneath heavy clouds.
+  location: Vosges, France
+  date: '2026-04-01'
+  width: 2400
+  height: 1600
+  albums:
+  - mountains
+- title: Chalet in the snow
+  image: "/images/photos/vosges-2026/img_9484.jpg"
+  thumbnail: "/images/photos/vosges-2026/img_9484-thumb.jpg"
+  alt: A chalet with a red roof and green shutters stands in the snow behind a line
+    of fence posts.
+  location: Vosges, France
+  date: '2026-04-01'
+  width: 2400
+  height: 1600
+  albums:
+  - mountains
+- title: Snowfall on the ridge
+  image: "/images/photos/vosges-2026/img_9510.jpg"
+  thumbnail: "/images/photos/vosges-2026/img_9510-thumb.jpg"
+  alt: Snow falls across a white ridge above wooded hills under heavy clouds.
+  location: Vosges, France
+  date: '2026-04-01'
+  width: 2400
+  height: 1600
+  albums:
+  - mountains
+- title: Aiguilles d’Arves
+  image: "/images/photos/ecrins-cerces-2025/img_9423.jpg"
+  thumbnail: "/images/photos/ecrins-cerces-2025/img_9423-thumb.jpg"
+  alt: The pointed summits of the Aiguilles d’Arves beneath low, broken clouds.
+  location: Aiguilles d’Arves, France
+  date: '2025-08-18'
+  width: 2400
+  height: 1600
+  albums:
+  - mountains
+- title: Grassy slopes and grey summit
+  image: "/images/photos/ecrins-cerces-2025/img_8952.jpg"
+  thumbnail: "/images/photos/ecrins-cerces-2025/img_8952-thumb.jpg"
+  alt: Rounded grassy hills lead to a grey triangular mountain peak beneath a blue
+    sky.
+  location: Écrins & Cerces, France
+  date: '2025-08-13'
+  width: 2400
+  height: 1600
+  albums:
+  - mountains
+- title: Mountain chalets
+  image: "/images/photos/ecrins-cerces-2025/img_8629.jpg"
+  thumbnail: "/images/photos/ecrins-cerces-2025/img_8629-thumb.jpg"
+  alt: A larch tree in front of wooden chalets on a grassy mountainside.
+  location: Écrins & Cerces, France
+  date: '2025-08-11'
+  width: 1600
+  height: 2400
+  albums:
+  - mountains
+- title: Wooded mountain valley
+  image: "/images/photos/ecrins-cerces-2025/img_8631.jpg"
+  thumbnail: "/images/photos/ecrins-cerces-2025/img_8631-thumb.jpg"
+  alt: Conifers fill a mountain valley below an open brown summit and a white cloud.
+  location: Écrins & Cerces, France
+  date: '2025-08-11'
+  width: 2400
+  height: 1600
+  albums:
+  - mountains
+- title: Through the trees
+  image: "/images/photos/france-england-2025/img_8547.jpg"
+  thumbnail: "/images/photos/france-england-2025/img_8547-thumb.jpg"
+  alt: Trees framing a narrow view over water towards pale city buildings.
+  location: London, England
+  date: '2025-05-10'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+- title: Elizabeth Tower
+  image: "/images/photos/france-england-2025/img_8550.jpg"
+  thumbnail: "/images/photos/france-england-2025/img_8550-thumb.jpg"
+  alt: Elizabeth Tower rises above buses and pedestrians under a clear blue sky.
+  location: London, England
+  date: '2025-05-10'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+- title: London Eye
+  image: "/images/photos/france-england-2025/img_8560.jpg"
+  thumbnail: "/images/photos/france-england-2025/img_8560-thumb.jpg"
+  alt: The London Eye and its passenger capsules above the Thames beneath a clear
+    blue sky.
+  location: London, England
+  date: '2025-05-10'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+- title: Towards St Paul’s
+  image: "/images/photos/france-england-2025/img_8564.jpg"
+  thumbnail: "/images/photos/france-england-2025/img_8564-thumb.jpg"
+  alt: The dome of St Paul’s Cathedral above a busy street with a red bus, taxis and
+    pedestrians.
+  location: London, England
+  date: '2025-05-10'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+- title: Alps in black and white
+  image: "/images/photos/france-england-2025/img_8501.jpg"
+  thumbnail: "/images/photos/france-england-2025/img_8501-thumb.jpg"
+  alt: Snow-covered mountain ridges beneath dramatic clouds, photographed in black
+    and white.
+  location: French Alps, France
+  date: '2025-04-21'
+  width: 2400
+  height: 1600
+  albums:
+  - mountains
+- title: Lyon at night
+  image: "/images/photos/france-england-2025/img_8445.jpg"
+  thumbnail: "/images/photos/france-england-2025/img_8445-thumb.jpg"
+  alt: An illuminated basilica stands above the city at night, with street lamps below.
+  location: Lyon, France
+  date: '2025-04-12'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+- title: Evening sky
+  image: "/images/photos/france-england-2025/img_8422.jpg"
+  thumbnail: "/images/photos/france-england-2025/img_8422-thumb.jpg"
+  alt: Layers of orange clouds over the dark silhouettes of rooftops.
+  location: Yvelines, France
+  date: '2025-03-28'
+  width: 2400
+  height: 1600
+  albums:
+  - sunsets
+- title: Glacier through the trees
+  image: "/images/photos/chamonix-2024/img_7889.jpg"
+  thumbnail: "/images/photos/chamonix-2024/img_7889-thumb.jpg"
+  thumbnail_position: 50% 60%
+  alt: Dark conifer branches frame a glacier and jagged mountain peaks beneath large
+    clouds.
+  location: Chamonix valley, France
+  date: '2024-08-24'
+  width: 1600
+  height: 2400
+  albums:
+  - mountains
+- title: Peaks and clouds
+  image: "/images/photos/chamonix-2024/img_7896.jpg"
+  thumbnail: "/images/photos/chamonix-2024/img_7896-thumb.jpg"
+  alt: Conifers frame mountain peaks beneath large white clouds.
+  location: Chamonix valley, France
+  date: '2024-08-24'
+  width: 2400
+  height: 1600
+  albums:
+  - mountains
+- title: Mont Blanc massif
+  image: "/images/photos/chamonix-2024/img_7775.jpg"
+  thumbnail: "/images/photos/chamonix-2024/img_7775-thumb.jpg"
+  alt: Snow-covered peaks and glaciers beyond a dark rocky ridge.
+  location: Chamonix valley, France
+  date: '2024-08-22'
+  width: 2400
+  height: 1600
+  albums:
+  - mountains
+- title: Ibex on the rocks
+  image: "/images/photos/chamonix-2024/img_7817.jpg"
+  thumbnail: "/images/photos/chamonix-2024/img_7817-thumb.jpg"
+  alt: An ibex standing in profile on a steep rocky mountainside.
+  location: Chamonix valley, France
+  date: '2024-08-22'
+  width: 2400
+  height: 1600
+  albums:
+  - mountains
+- title: Last light on the summit
+  image: "/images/photos/chamonix-2024/img_7850.jpg"
+  thumbnail: "/images/photos/chamonix-2024/img_7850-thumb.jpg"
+  alt: Warm evening light on a rocky summit framed by dark conifers.
+  location: Chamonix valley, France
+  date: '2024-08-22'
+  width: 2400
+  height: 1600
+  albums:
+  - mountains
+  - sunsets
+- title: Ibex against the sky
+  image: "/images/photos/chamonix-2024/img_7823.jpg"
+  thumbnail: "/images/photos/chamonix-2024/img_7823-thumb.jpg"
+  alt: An ibex stands on sloping rock, its back and profile silhouetted against a
+    blue sky.
+  location: Chamonix valley, France
+  date: '2024-08-22'
+  width: 2400
+  height: 1600
+  albums:
+  - mountains
+- title: Clouds in the valley
+  image: "/images/photos/chamonix-2024/img_7526.jpg"
+  thumbnail: "/images/photos/chamonix-2024/img_7526-thumb.jpg"
+  alt: A mountain summit catching warm light through clouds above a dark valley.
+  location: Chamonix valley, France
+  date: '2024-08-19'
+  width: 2400
+  height: 1600
+  albums:
+  - mountains
+  - sunsets
+- title: Evening in the village
+  image: "/images/photos/chamonix-2024/img_7513.jpg"
+  thumbnail: "/images/photos/chamonix-2024/img_7513-thumb.jpg"
+  alt: A stream and village houses leading towards mountains under evening clouds.
+  location: Chamonix valley, France
+  date: '2024-08-19'
+  width: 1600
+  height: 2400
+  albums:
+  - mountains
+  - sunsets
+- title: At the water’s edge
+  image: "/images/photos/maine-2024/img_7432.jpg"
+  thumbnail: "/images/photos/maine-2024/img_7432-thumb.jpg"
+  thumbnail_position: 50% 75%
+  alt: A bird silhouetted on coastal rocks beneath a pink and orange sky.
+  location: Acadia, Maine, USA
+  date: '2024-08-07'
+  width: 1339
+  height: 2009
+  albums:
+  - sunsets
+- title: Boat at dusk
+  image: "/images/photos/maine-2024/img_7388.jpg"
+  thumbnail: "/images/photos/maine-2024/img_7388-thumb.jpg"
+  alt: A small motorboat and its wake crossing dark water at dusk.
+  location: Acadia, Maine, USA
+  date: '2024-08-07'
+  width: 1600
+  height: 2400
+  albums:
+  - sunsets
+- title: Sunset on the coast
+  image: "/images/photos/maine-2024/img_7395.jpg"
+  thumbnail: "/images/photos/maine-2024/img_7395-thumb.jpg"
+  alt: The setting sun glows beside a dark, tree-lined coast beneath an orange sky.
+  location: Acadia, Maine, USA
+  date: '2024-08-07'
+  width: 2400
+  height: 1600
+  albums:
+  - sunsets
+- title: Observation tower at night
+  image: "/images/photos/niagara-falls-2024/img_7301.jpg"
+  thumbnail: "/images/photos/niagara-falls-2024/img_7301-thumb.jpg"
+  alt: An illuminated observation tower rises into the dark sky, with a cloud drifting
+    beside it.
+  location: Niagara Falls, Canada
+  date: '2024-08-05'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+- title: Elevated train
+  image: "/images/photos/chicago-2024/img_7262.jpg"
+  thumbnail: "/images/photos/chicago-2024/img_7262-thumb.jpg"
+  alt: A silver train running above street level between tall city buildings.
+  location: Chicago, USA
+  date: '2024-08-04'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+- title: Wells Street
+  image: "/images/photos/chicago-2024/img_7158.jpg"
+  thumbnail: "/images/photos/chicago-2024/img_7158-thumb.jpg"
+  alt: An elevated train crossing a city street lined with traffic lights and tall
+    buildings.
+  location: Chicago, USA
+  date: '2024-08-03'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+- title: Between the buildings
+  image: "/images/photos/chicago-2024/img_7072.jpg"
+  thumbnail: "/images/photos/chicago-2024/img_7072-thumb.jpg"
+  alt: A view along a street between tall buildings in late afternoon light.
+  location: Chicago, USA
+  date: '2024-08-03'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+- title: Clock tower by the river
+  image: "/images/photos/chicago-2024/img_7190.jpg"
+  thumbnail: "/images/photos/chicago-2024/img_7190-thumb.jpg"
+  thumbnail_position: 50% 60%
+  alt: An illuminated brick clock tower above a bridge, with tall buildings behind
+    and lights reflected in the river.
+  location: Chicago, USA
+  date: '2024-08-03'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+- title: Under the tracks
+  image: "/images/photos/chicago-2024/img_6955.jpg"
+  thumbnail: "/images/photos/chicago-2024/img_6955-thumb.jpg"
+  thumbnail_position: 50% 15%
+  alt: A red traffic light and repeating metal columns above a Chicago street.
+  location: Chicago, USA
+  date: '2024-08-02'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+- title: Lanterns
+  image: "/images/photos/montreal-2024/img_6789.jpg"
+  thumbnail: "/images/photos/montreal-2024/img_6789-thumb.jpg"
+  alt: Red and gold lanterns hanging in a dark interior above a bright doorway.
+  location: Montréal, Canada
+  date: '2024-07-28'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+- title: Art stalls in Montréal
+  image: "/images/photos/montreal-2024/img_6530.jpg"
+  thumbnail: "/images/photos/montreal-2024/img_6530-thumb.jpg"
+  alt: Art stalls and historic buildings surround a square, with a column silhouetted
+    against a warm sky.
+  location: Montréal, Canada
+  date: '2024-07-27'
+  width: 2400
+  height: 1600
+  albums:
+  - cities
+- title: Above the rooftops
+  image: "/images/photos/montreal-2024/img_6593.jpg"
+  thumbnail: "/images/photos/montreal-2024/img_6593-thumb.jpg"
+  alt: A small plane crosses a hazy sky above dark trees and city rooftops.
+  location: Montréal, Canada
+  date: '2024-07-27'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+- title: Shell sign
+  image: "/images/photos/boston-cambridge-2024/img_6339.jpg"
+  thumbnail: "/images/photos/boston-cambridge-2024/img_6339-thumb.jpg"
+  alt: A large Shell sign silhouetted above parked cars at sunset.
+  location: Cambridge, USA
+  date: '2024-07-19'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+  - sunsets
+- title: Paddleboard at sunset
+  image: "/images/photos/boston-cambridge-2024/img_6361.jpg"
+  thumbnail: "/images/photos/boston-cambridge-2024/img_6361-thumb.jpg"
+  alt: A paddleboarder silhouetted beside a trail of sunset light on the water.
+  location: Boston, USA
+  date: '2024-07-19'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+  - sunsets
+- title: Reflection
+  image: "/images/photos/boston-cambridge-2024/img_5495.jpg"
+  thumbnail: "/images/photos/boston-cambridge-2024/img_5495-thumb.jpg"
+  alt: A church steeple and blue sky reflected in a puddle on the pavement.
+  location: Boston, USA
+  date: '2024-07-02'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+- title: Fireworks
+  image: "/images/photos/boston-cambridge-2024/img_5620.jpg"
+  thumbnail: "/images/photos/boston-cambridge-2024/img_5620-thumb.jpg"
+  alt: Green and white fireworks burst against a dark night sky.
+  location: Boston, USA
+  date: '2024-07-02'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+- title: Bus in evening light
+  image: "/images/photos/new-york-2024/img_4775.jpg"
+  thumbnail: "/images/photos/new-york-2024/img_4775-thumb.jpg"
+  alt: A city bus and rising steam catching golden light on a New York street.
+  location: New York, USA
+  date: '2024-06-08'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+  - sunsets
+- title: Night traffic
+  image: "/images/photos/new-york-2024/img_4816.jpg"
+  thumbnail: "/images/photos/new-york-2024/img_4816-thumb.jpg"
+  alt: Long red light trails passing along a tree-lined city street at night.
+  location: New York, USA
+  date: '2024-06-08'
+  width: 2400
+  height: 1600
+  albums:
+  - cities
+- title: Sunlight and a yellow taxi
+  image: "/images/photos/new-york-2024/img_4755.jpg"
+  thumbnail: "/images/photos/new-york-2024/img_4755-thumb.jpg"
+  alt: Sunlight falls between tall buildings as a yellow taxi crosses the foreground.
+  location: New York, USA
+  date: '2024-06-08'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+  - sunsets
+- title: Manhattan from the water
+  image: "/images/photos/new-york-2024/img_4551.jpg"
+  thumbnail: "/images/photos/new-york-2024/img_4551-thumb.jpg"
+  alt: The Manhattan skyline below pink clouds, with a sailing boat on the water.
+  location: New York, USA
+  date: '2024-06-07'
+  width: 2400
+  height: 1600
+  albums:
+  - cities
+  - sunsets
+- title: Tree-lined street
+  image: "/images/photos/new-york-2024/img_4404.jpg"
+  thumbnail: "/images/photos/new-york-2024/img_4404-thumb.jpg"
+  alt: Tree branches frame a New York street with a yellow taxi and brick buildings.
+  location: New York, USA
+  date: '2024-06-07'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+- title: Taxi in motion
+  image: "/images/photos/new-york-2024/img_4420.jpg"
+  thumbnail: "/images/photos/new-york-2024/img_4420-thumb.jpg"
+  alt: A yellow taxi photographed against blurred buildings in a panning shot.
+  location: New York, USA
+  date: '2024-06-07'
+  width: 2400
+  height: 1600
+  albums:
+  - cities
+- title: Manhattan in evening light
+  image: "/images/photos/new-york-2024/img_4489.jpg"
+  thumbnail: "/images/photos/new-york-2024/img_4489-thumb.jpg"
+  alt: Waterfront buildings catch warm evening light beneath a tall tower and scattered
+    clouds.
+  location: New York, USA
+  date: '2024-06-07'
+  width: 2400
+  height: 1600
+  albums:
+  - cities
+  - sunsets
+- title: Manhattan after dark
+  image: "/images/photos/new-york-2024/img_4564.jpg"
+  thumbnail: "/images/photos/new-york-2024/img_4564-thumb.jpg"
+  alt: Illuminated towers on the Manhattan waterfront beneath a deep blue sky.
+  location: New York, USA
+  date: '2024-06-07'
+  width: 2400
+  height: 1600
+  albums:
+  - cities
+- title: Empire State Building
+  image: "/images/photos/new-york-2024/img_4154.jpg"
+  thumbnail: "/images/photos/new-york-2024/img_4154-thumb.jpg"
+  thumbnail_position: 50% 15%
+  alt: The Empire State Building framed by nearer buildings and tree branches.
+  location: New York, USA
+  date: '2024-06-06'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+- title: On the water
+  image: "/images/photos/boston-cambridge-2024/img_3724.jpg"
+  thumbnail: "/images/photos/boston-cambridge-2024/img_3724-thumb.jpg"
+  alt: People silhouetted in a small boat against sparkling water and overhanging
+    branches.
+  location: Boston, USA
+  date: '2024-05-31'
+  width: 1600
+  height: 2400
+  albums:
+  - cities
+- title: Harvard Book Store
+  image: "/images/photos/boston-cambridge-2024/img_3453.jpg"
+  thumbnail: "/images/photos/boston-cambridge-2024/img_3453-thumb.jpg"
+  alt: The round Harvard Book Store sign catching warm light against a cloudy sky.
+  location: Cambridge, USA
+  date: '2024-05-30'
+  width: 1600
+  height: 2400
+  albums:
+  - cities

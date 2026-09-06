@@ -4,12 +4,16 @@ title: Research
 permalink: /research/
 nav: research
 topics:
-  - Generalization & PAC-Bayes
-  - Symmetries in neural networks
   - Discrete diffusion models
+  - Analysis & PDEs
+  - Algebraic methods on graphs
+  - Random matrix theory
+  - Discrete optimal transport
 ---
 
-My interests lie in the mathematical foundations of machine learning, with a particular focus on generalization theory and generative models.
+My main research interest is the theory of discrete diffusion models.
+
+My broader mathematical interests include analysis (especially Fourier analysis, semigroups, and partial differential equations), algebraic methods on graphs, and random matrix theory. I would also like to explore optimal transport on discrete spaces.
 
 My work on discrete diffusion models is supervised by Julie Delon, Rémi Gribonval, and Gabriel Peyré. Previously, I worked at Inria with the [OCKHAM](https://team.inria.fr/ockham/fr/) and [GENESIS](https://bguedj.github.io) teams on PAC-Bayes bounds and symmetries in neural networks.
 

@@ -8,3 +8,6 @@ local/
 .bundle/
 .vscode/
 .DS_Store
+
+# Local photo originals; only web exports belong in the repository.
+/PHOTO/
