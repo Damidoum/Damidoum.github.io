@@ -1,0 +1,16 @@
+main:
+  - title: About
+    url: /
+    key: about
+  - title: Research
+    url: /research/
+    key: research
+  - title: Blog
+    url: /blog/
+    key: notebook
+  - title: Photos
+    url: /photos/
+    key: photos
+  - title: CV
+    url: /cv/
+    key: cv

@@ -1,0 +1,19 @@
+---
+layout: base
+---
+<article class="wrap">
+  <header class="page-heading article-heading">
+    {% include site/draft.html entry=page %}
+    {% if page.collection == 'publications' %}<a class="article-back" href="{{ '/publications/' | relative_url }}">← All publications</a>{% elsif page.collection == 'projects' or page.date %}<a class="article-back" href="{{ '/blog/' | relative_url }}">← Blog</a>{% endif %}
+    {% if page.topic %}<p class="eyebrow">{{ page.topic }}</p>{% endif %}
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}<p>{{ page.description }}</p>{% endif %}
+    {% if page.date %}<div class="article-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%B %-d, %Y' }}</time>{% assign words = content | strip_html | number_of_words %}{% assign minutes = words | divided_by: 200 | plus: 1 %}<span>{{ minutes }} min read</span>{% if page.venue %}<span>{{ page.venue }}</span>{% endif %}</div>{% endif %}
+  </header>
+  <div class="prose">
+    {{ content }}
+    {% if page.paperurl or page.bibtexurl %}<div class="publication-links">{% if page.paperurl %}<a href="{{ page.paperurl }}">Read the paper ↗</a>{% endif %}{% if page.bibtexurl %}<a href="{{ page.bibtexurl | relative_url }}">Download BibTeX ↓</a>{% endif %}</div>{% endif %}
+    {% if page.citation %}<p class="citation">{{ page.citation }}</p>{% endif %}
+    {% if page.date %}<footer class="article-footer">{% if page.collection == 'publications' %}<a href="{{ '/publications/' | relative_url }}">← All publications</a>{% else %}<a href="{{ '/blog/' | relative_url }}">← Back to the blog</a>{% endif %}<a href="mailto:{{ site.data.profile.email }}">Get in touch ↗</a></footer>{% endif %}
+  </div>
+</article>

@@ -1,0 +1,10 @@
+---
+layout: archive
+---
+<div class="project-list">
+{% for project in site.projects %}
+  {% if project.tags contains 'MVA' %}
+  <a class="project-row" href="{{ project.url | relative_url }}"><time datetime="{{ project.date | date_to_xmlschema }}">{{ project.date | date: '%Y' }}</time><div><h2>{{ project.title }}</h2><p>{{ project.description }}</p></div><span aria-hidden="true">↗</span></a>
+  {% endif %}
+{% endfor %}
+</div>

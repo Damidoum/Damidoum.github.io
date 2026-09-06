@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.url != '/' %}{{ page.title | escape }} · {% endif %}{{ site.title }}</title>
+  {% assign description = page.description | default: page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 %}
+  <meta name="description" content="{{ description | escape }}">
+  <meta name="theme-color" content="#f7f8fa">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta property="og:title" content="{{ page.title | default: site.title | escape }}">
+  <meta property="og:description" content="{{ description | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:type" content="{% if page.date %}article{% else %}website{% endif %}">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="{{ '/design/site.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+  {% feed_meta %}
+  <script defer src="{{ '/design/site.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+  {% if page.math %}
+  <script>window.MathJax = {tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, options: {skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+  {% endif %}
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="identity" href="{{ '/' | relative_url }}" aria-label="{{ site.data.profile.name | escape }}, home">{{ site.data.profile.name | escape }}</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>Menu <span aria-hidden="true">＋</span></button>
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+      {% for item in site.data.navigation.main %}
+      {% assign active = false %}{% if page.url == item.url or page.nav == item.key %}{% assign active = true %}{% endif %}
+      <a href="{{ item.url | relative_url }}"{% if active %} aria-current="page"{% endif %}>{{ item.title }}</a>
+      {% endfor %}
+    </nav>
+  </header>
+  <main id="main" tabindex="-1">{{ content }}</main>
+  <footer class="site-footer wrap">
+    <span class="copyright">© {{ site.time | date: '%Y' }} {{ site.data.profile.name | escape }}</span>
+    <div class="footer-links"><a href="mailto:{{ site.data.profile.email }}">Email</a><a href="{{ site.data.profile.googlescholar }}">Scholar</a><a href="https://github.com/{{ site.data.profile.github }}">GitHub</a><a href="https://www.linkedin.com/in/{{ site.data.profile.linkedin }}/">LinkedIn</a><a href="{{ '/feed.xml' | relative_url }}">RSS</a></div>
+  </footer>
+</body>
+</html>
