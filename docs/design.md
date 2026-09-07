@@ -10,6 +10,9 @@ Le design est indépendant des textes :
 - `design/layouts/single.html` : articles et publications.
 - Les autres layouts composent les pages de listes et la galerie.
 - `design/includes/site/` : vignettes, lignes de publications et mention de brouillon.
+- `assets/icons/mountain.svg` : petite icône de montagne de l’onglet du navigateur.
+  `favicon.ico` en fournit les versions 16, 32 et 48 pixels. Les deux sont déclarés
+  dans `design/layouts/base.html` ; incrémente leur paramètre `v` si tu les remplaces.
 
 Les pages fixes sont des fichiers Markdown dans `content/pages/`. Leur en-tête
 choisit un layout et une adresse. Les listes se mettent à jour automatiquement
