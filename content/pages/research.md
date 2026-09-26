@@ -3,12 +3,6 @@ layout: research
 title: Research
 permalink: /research/
 nav: research
-topics:
-  - Discrete diffusion models
-  - Analysis & PDEs
-  - Algebraic methods on graphs
-  - Random matrix theory
-  - Discrete optimal transport
 ---
 
 My main research interest is the theory of discrete diffusion models.
