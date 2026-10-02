@@ -32,7 +32,7 @@ _Lycée Hoche · Versailles, France · 2020-2022_
 
 ### Research Intern - Weak error analysis for discrete diffusion samplers
 
-_École normale supérieure - Department of Mathematics and Applications (DMA) · Paris, France · 2026-present_
+_École normale supérieure - Department of Mathematics and Applications (DMA) · Paris, France · 2026_
 
 Supervisors: Julie Delon, Rémi Gribonval and Gabriel Peyré.
 
